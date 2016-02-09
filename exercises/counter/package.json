@@ -1,5 +1,5 @@
 {
-  "name": "react-static-boilerplate",
+  "name": "react-counter-boilerplate",
   "version": "0.2.0",
   "description": "A barebones boilerplate for building apps with React",
   "engines": {
@@ -14,21 +14,9 @@
     "start:dev": "babel-node ./server.js",
     "start": "npm run start:dev",
     "build:static": "NODE_ENV=production webpack --config webpack.config.prod.js",
-    "build": "npm run clean && npm run build:static",
-    "preversion": "npm test",
-    "postversion": "git push && git push --tags",
-    "bump:patch": "npm version patch -m \"v%s\"",
-    "bump:minor": "npm version minor -m \"v%s\"",
-    "bump": "npm run bump:patch"
+    "build": "npm run clean && npm run build:static"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/iansinnott/react-static-boilerplate"
-  },
-  "bugs": {
-    "url": "https://github.com/iansinnott/react-static-boilerplate/issues"
-  },
-  "author": "Ian Sinnott <ian@iansinnott.com> (http://iansinnott.com)",
+  "author": "Ian Sinnott <ian@iansinnott.com> (https://github.com/iansinnott)",
   "license": "MIT",
   "homepage": "",
   "devDependencies": {
