@@ -40,6 +40,7 @@ export const App = React.createClass({
   },
   onDecrement() {
     const { count } = this.state;
+    if (count === 0) return; // Don't go below zero
     this.setState({ count: count - 1 });
   },
   render() {

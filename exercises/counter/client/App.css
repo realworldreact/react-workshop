@@ -14,6 +14,10 @@ button {
   appearance: none;
 }
 
+button:first-child {
+  margin-right: 20px;
+}
+
 .App {
   background: #222;
   min-width: 320px;
