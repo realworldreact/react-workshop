@@ -8,6 +8,12 @@ body {
   font-size: 18px;
 }
 
+button {
+  color: black;
+  outline: none;
+  appearance: none;
+}
+
 .App {
   background: #222;
   min-width: 320px;
@@ -19,6 +25,11 @@ body {
   display: inline-block;
   width: 80px;
   height: 80px;
+}
+
+.Counter h1 {
+  font-size: 72px;
+  font-weight: 100;
 }
 
 @media only screen and (max-width: 420px) {
