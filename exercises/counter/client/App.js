@@ -34,6 +34,12 @@ export const App = React.createClass({
       count: 0,
     };
   },
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeyDown);
+  },
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleKeyDown);
+  },
   onIncrement() {
     const { count } = this.state;
     this.setState({ count: count + 1 });
@@ -42,6 +48,20 @@ export const App = React.createClass({
     const { count } = this.state;
     if (count === 0) return; // Don't go below zero
     this.setState({ count: count - 1 });
+  },
+  handleKeyDown(e) {
+    const LEFT = 37;
+    const RIGHT = 39;
+    const UP = 38;
+    const DOWN = 40;
+
+    if (e.which === LEFT || e.which === DOWN) {
+      return this.onDecrement();
+    } else if (e.which === RIGHT || e.which === UP) {
+      return this.onIncrement();
+    } else {
+      return; // Do nothing
+    }
   },
   render() {
     return (
