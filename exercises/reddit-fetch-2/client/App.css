@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #222;
+  font-size: 18px;
+}
+
+.App {
+  padding: 0;
+  min-width: 320px;
+  text-align: center;
+}
+
+.App form {
+  background: #222;
+  padding: 20px;
+}
+
+.posts {
+  padding: 20px;
+}
+
+@media only screen and (max-width: 420px) {
+  .App img {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
