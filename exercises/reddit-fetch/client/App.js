@@ -59,8 +59,8 @@ export const App = React.createClass({
 
   handleSubmit(e) {
     e.preventDefault();
-
     const subreddit = e.target.elements.subreddit.value.trim();
+
     if (!subreddit) {
       Promise.resolve([]).then(posts => this.setState({ posts }))
       return;

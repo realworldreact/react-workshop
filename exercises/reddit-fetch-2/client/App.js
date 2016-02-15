@@ -7,34 +7,15 @@ import './favicon.ico';
 
 const ENDPOINT = 'https://www.reddit.com/r/';
 
-const Counter = React.createClass({
-  propTypes: {
-    count: PropTypes.number.isRequired,
-    onIncrement: PropTypes.func.isRequired,
-    onDecrement: PropTypes.func.isRequired,
-  },
-
-  render() {
-    const { count, onIncrement, onDecrement } = this.props;
-    return (
-      <div className='Counter'>
-        <div className='siteTitle'>
-          <h1>{count}</h1>
-        </div>
-        <div className='controls'>
-          <button onClick={onDecrement}>-</button>
-          <button onClick={onIncrement}>+</button>
-        </div>
-      </div>
-    );
-  },
-});
-
-const mapRedditPost = post => post.data;
-
 const Post = React.createClass({
+  propTypes: {
+    post: PropTypes.shape({
+      permalink: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+    }).isRequired,
+  },
   render() {
-    const { permalink, title } = mapRedditPost(this.props.post);
+    const { permalink, title } = this.props.post;
     return (
       <div className='Post'>
         <a href={`https://www.reddit.com${permalink}`} target='_blank'>{title}</a>
@@ -43,41 +24,45 @@ const Post = React.createClass({
   },
 });
 
-export const App = React.createClass({
-  getInitialState() {
-    return {
-      posts: [],
-    };
-  },
+/**
+ * This is just a super barebones example of representing a loading state. The
+ * reason for separating it out into its own component is to demonstrate how
+ * simple it will now be to update the loading spinner to be more user friendly.
+ */
+const LoadingSpinner = () => (
+  <h1>Loading...</h1>
+);
 
-  fetch(subreddit) {
-    return fetch(ENDPOINT + subreddit + '.json')
-    .then(res =>  res.json())
-    .then(json => json.data.children)
-    .catch(err => console.error('There was an error fetching.', err));
-  },
-
-  handleSubmit(e) {
-    e.preventDefault();
-    const subreddit = e.target.elements.subreddit.value.trim();
-
-    if (!subreddit) {
-      Promise.resolve([]).then(posts => this.setState({ posts }))
-      return;
-    }
-
-    this.fetch(subreddit)
-    .then(posts => this.setState({ posts }))
-    .catch(err => console.error(err));
+const App = React.createClass({
+  propTypes: {
+    handleSubmit: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    posts: PropTypes.array.isRequired,
+    loading: PropTypes.bool.isRequired,
+    subreddit: PropTypes.string.isRequired,
   },
 
   render() {
-    const { posts } = this.state;
+    const {
+      handleSubmit,
+      handleChange,
+      posts,
+      loading,
+      subreddit,
+    } = this.props;
+
     return (
       <div className='App'>
-        <form onSubmit={this.handleSubmit}>
-          <input name='subreddit' type='text' placeholder='Enter Reddit...' />
+        <form onSubmit={handleSubmit}>
+          <input
+            name='subreddit'
+            type='text'
+            placeholder='Enter Reddit...'
+            value={subreddit}
+            onChange={handleChange}
+          />
         </form>
+        {loading && <LoadingSpinner />}
         {posts.length ? (
           <div className='posts'>
             {posts.map((post, i) => (
@@ -86,6 +71,64 @@ export const App = React.createClass({
           </div>
         ) : <h2>No reddit posts</h2>}
       </div>
+    );
+  },
+});
+
+export const AppContainer = React.createClass({
+  getInitialState() {
+    return {
+      loading: false,
+      subreddit: '',
+      posts: [],
+    };
+  },
+
+  fetch(subreddit) {
+    return fetch(ENDPOINT + subreddit + '.json')
+    .then(res => res.json())
+    .then(json => json.data.children)
+    .catch(err => {
+      console.error('There was an error fetching.', err);
+    });
+  },
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const { subreddit } = this.state;
+
+    if (!subreddit) {
+      Promise.resolve([]).then(posts => this.setState({ posts }));
+      return;
+    }
+
+    // We only care about passing down post data, not top-level meadata. That's
+    // whay the first `.then` is for
+    this.setState({ loading: true });
+    this.fetch(subreddit)
+    .then(posts => posts || Promise.reject(posts))
+    .then(posts => posts.map(x => x.data))
+    .then(posts => this.setState({ posts, loading: false }))
+    .catch(err => {
+      this.setState({ posts: [], loading: false });
+      console.error(err);
+    });
+  },
+
+  handleChange(e) {
+    const subreddit = e.target.value.trim();
+    this.setState({ subreddit });
+  },
+
+  // Container components do not handle markup, they simply define functionality
+  // and pass props
+  render() {
+    return (
+      <App
+        handleSubmit={this.handleSubmit}
+        handleChange={this.handleChange}
+        {...this.state}
+      />
     );
   },
 });

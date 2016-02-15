@@ -2,6 +2,12 @@
   "extends": "airbnb",
   "rules": {
 
+    // Allow the use of console
+    "no-console": [0],
+
+    // Allow concatenating
+    "prefer-template": [0],
+
     // Single quotes on JSX components
     "jsx-quotes": [2, "prefer-single"],
 
