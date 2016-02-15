@@ -73,17 +73,18 @@ export const App = React.createClass({
 
   render() {
     const { posts } = this.state;
-    console.log(this.state);
     return (
       <div className='App'>
         <form onSubmit={this.handleSubmit}>
           <input name='subreddit' type='text' placeholder='Enter Reddit...' />
         </form>
-        <div className='posts'>
-          {posts.map((post, i) => (
-            <Post key={i} post={post} />
-          ))}
-        </div>
+        {posts.length ? (
+          <div className='posts'>
+            {posts.map((post, i) => (
+              <Post key={i} post={post} />
+            ))}
+          </div>
+        ) : <h2>No reddit posts</h2>}
       </div>
     );
   },
