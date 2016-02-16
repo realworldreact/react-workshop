@@ -1,7 +1,7 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { Route, IndexRedirect } from 'react-router';
 
-import { App, Home, NotFound } from './components/App.js';
+import { App, NotFound } from './components/App.js';
 
 import Intro from './slides/1-intro.js';
 import About from './slides/2-about.js';
@@ -11,7 +11,7 @@ import FurtherReading from './slides/3-further-reading.js';
 
 export const routes = (
   <Route path='/' title='App' component={App}>
-    <IndexRoute component={Home} />
+    <IndexRedirect to='1' />
     <Route path='1' component={Intro} />
     <Route path='2' component={About} />
     <Route path='3' component={FurtherReading} />
