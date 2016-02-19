@@ -293,6 +293,8 @@ https://www.reddit.com/r/reactjs.json
 
 ^ To get the JSON endpoint for any subreddit just go to it in the browser and then add `.json` to the URL 
 
+^ Try not to be distracted by enticing reddit headlings ;)
+
 ---
 
 # **Questions?**
