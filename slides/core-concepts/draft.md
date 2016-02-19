@@ -128,6 +128,24 @@ Combine and re-use components
 
 ---
 
+# **Rendering to the DOM**
+
+```js
+import { render } from 'react-dom';
+import App from './App.js';
+const el = documenet.getElementById('root');
+
+render(<App />, el);
+```
+
+All existing contents of `el` will be replaced by the `<App />` component
+
+^ So now that we know the basic component syntax, how the hell to we get them into the browser?
+
+^ Render takes a React component and a DOM element to attach to.
+
+---
+
 # **Data**
 
 ## **(data) => markup**
