@@ -33,6 +33,46 @@ const LoadingSpinner = () => (
   <h1>Loading...</h1>
 );
 
+const PostList = React.createClass({
+  propTypes: {
+    posts: PropTypes.array.isRequired,
+  },
+
+  getInitialState() {
+    return {
+      filter: '',
+    };
+  },
+
+  handleChange(e) {
+    const filter = e.target.value.toLowerCase().trim();
+    this.setState({ filter });
+  },
+
+  render() {
+    const { filter } = this.state;
+    const posts = this.props.posts.filter(x => {
+      return x.title.toLowerCase().indexOf(filter) !== -1;
+    });
+    return (
+      <div className='PostList'>
+        <input
+          type='text'
+          className='filter'
+          value={filter}
+          onChange={this.handleChange}
+          placeholder='Filter...'
+        />
+        <div className='posts'>
+          {posts.map((post, i) => (
+            <Post key={i} post={post} />
+          ))}
+        </div>
+      </div>
+    );
+  },
+});
+
 const App = React.createClass({
   propTypes: {
     handleSubmit: PropTypes.func.isRequired,
@@ -63,13 +103,7 @@ const App = React.createClass({
           />
         </form>
         {loading && <LoadingSpinner />}
-        {posts.length ? (
-          <div className='posts'>
-            {posts.map((post, i) => (
-              <Post key={i} post={post} />
-            ))}
-          </div>
-        ) : <h2>No reddit posts</h2>}
+        {posts.length ? <PostList posts={posts} /> : <h2>No reddit posts</h2>}
       </div>
     );
   },

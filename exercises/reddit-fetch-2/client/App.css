@@ -30,3 +30,15 @@ body {
   }
 }
 
+.PostList {
+  padding-top: 20px;
+}
+
+input {
+  width: 300px;
+  outline: none;
+  appearance: none;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
