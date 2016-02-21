@@ -1,0 +1,5 @@
+import { render } from 'react-dom';
+import App from './App.js';
+const el = documenet.getElementById('root');
+
+render(<App />, el);

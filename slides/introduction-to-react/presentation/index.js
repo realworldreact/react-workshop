@@ -150,7 +150,16 @@ export default class Presentation extends React.Component {
             </List>
           </Slide>
 
-          <Slide transition={['zoom', 'fade']} bgColor='primary'>
+          <Slide
+            transition={['zoom', 'fade']}
+            bgColor='primary'
+            notes={`
+              * A lot to take in here
+              * class v className
+              * Auto closing tags
+              * Rendering to the dom
+              * Note that only the render call actually creates dom. the rest is just a descriptor
+            `.trim()}>
             <CodePane
               lang='jsx'
               source={require('raw!./jsx.example')}
@@ -172,18 +181,202 @@ export default class Presentation extends React.Component {
             </Appear>
           </Slide>
 
-
-
-          <Slide notes={`
-          * Turns out state can be a good place to store lists that change
-          `.trim()}>
-            <Heading size={1} caps lineHeight={1.5}>
-              State II
-            </Heading>
+          <Slide
+            transition={['zoom', 'fade']}
+            bgColor='primary'
+            notes={`
+              * This is all just js
+              * We'll talk a lot more about this later, so for now don't worry
+            `.trim()}>
             <Heading size={4} caps lineHeight={1.5} textColor='white'>
-              Eventually you're coing to want to render a list
+              First class JavaScript
+            </Heading>
+            <CodePane
+              lang='jsx'
+              source={require('raw!./jsx4.example')}
+              margin='20px auto'
+            />
+          </Slide>
+
+          <Slide
+            transition={['zoom', 'fade']}
+            bgColor='primary'
+            notes={`
+              * Note that there are ways around the if else issue
+            `.trim()}>
+            <Heading size={4} caps lineHeight={1.5} textColor='white'>
+              JSX Gotchas
+            </Heading>
+            <List textColor='white'>
+              <Appear><ListItem><code>className</code>, <code>htmlFor</code></ListItem></Appear>
+              <Appear><ListItem>No if-else (expressions only)</ListItem></Appear>
+              <Appear><ListItem>Must wrap consecutive tags</ListItem></Appear>
+            </List>
+          </Slide>
+
+          <Slide transition={['zoom', 'fade']}>
+            <Heading size={1} caps fit lineHeight={1.5} textColor='white'>
+              Components
             </Heading>
           </Slide>
+
+          <Slide>
+            <Heading size={4} caps lineHeight={1.5} textColor='white'>
+              Components: Groups of JSX and JavaScript
+            </Heading>
+            <Appear>
+              <CodePane
+                lang='jsx'
+                source={require('raw!./component.example')}
+                margin='20px auto'
+              />
+            </Appear>
+          </Slide>
+
+          <Slide notes={`
+            * For presentations we will use React.createClass syntax for simplicity
+            * There will be exercises and of course you can use any syntax you prefer
+          `.trim()}>
+            <Heading size={4} caps lineHeight={1.5} textColor='white'>
+              Creating Components
+            </Heading>
+            <List textColor='white'>
+              <Appear><ListItem>Original <code>React.createClass</code></ListItem></Appear>
+              <Appear><ListItem>ES6 class syntax, i.e. extned <code>React.Component</code></ListItem></Appear>
+              <Appear><ListItem>Functional</ListItem></Appear>
+            </List>
+            <Appear>
+              <Heading size={4} caps lineHeight={1.5} textColor='white'>
+                Don't worry about it
+              </Heading>
+            </Appear>
+          </Slide>
+
+          <Slide>
+            <Heading size={4} caps lineHeight={1.5} textColor='white'>
+              Benefits
+            </Heading>
+            <Appear>
+              <List textColor='white'>
+                <ListItem>Encapsulation</ListItem>
+                <ListItem>Composability</ListItem>
+              </List>
+            </Appear>
+          </Slide>
+
+          <Slide notes={`
+            * Encapsulation is a benefit, but it does tend to fly in the face of what many people used to think was best practices
+            * View-related functionality is key here. Only the functionality necessary for our UI is encompassed by React
+            * Putting data binding here is a tease. we won't be talking about it yet but we will later
+          `.trim()}>
+            <Heading size={4} caps lineHeight={1.5} textColor='white'>
+              Encapsulation
+            </Heading>
+            <Text textColor='white'>Markup & view-related functionality together at last</Text>
+            <Appear>
+              <List textColor='white'>
+                <ListItem>HTML (JSX)</ListItem>
+                <ListItem>Derived values</ListItem>
+                <ListItem>Event handlers</ListItem>
+                <ListItem>Modularized, testable</ListItem>
+              </List>
+            </Appear>
+          </Slide>
+
+          <Slide notes={`
+            * Someone likely already implemented something you need
+          `.trim()}>
+            <Heading size={4} caps lineHeight={1.5} textColor='white'>
+              Composition
+            </Heading>
+            <Text textColor='white'>Combine and re-use components</Text>
+            <Appear>
+              <List textColor='white'>
+                <ListItem>DRYer code</ListItem>
+                <ListItem>Utilities for the UI</ListItem>
+                <ListItem>Modularized, testable</ListItem>
+                <ListItem>Large and vibrant ecosystem</ListItem>
+              </List>
+            </Appear>
+          </Slide>
+
+          <Slide notes={`
+          `.trim()}>
+            <Heading size={4} caps lineHeight={1.5} textColor='white'>
+              Rendering to the DOM
+            </Heading>
+            <Appear>
+              <CodePane
+                lang='jsx'
+                source={require('raw!./render.example')}
+                margin='20px auto'
+              />
+            </Appear>
+          </Slide>
+
+          <Slide notes={`
+          `.trim()}>
+            <Heading size={1} caps fit lineHeight={1} textColor={reactBlue}>
+              Data
+            </Heading>
+            <Heading size={4} fit lineHeight={1} textColor='white'>
+              (data) => markup
+            </Heading>
+          </Slide>
+
+          <Slide notes={`
+          `.trim()}>
+            <Heading size={4} caps lineHeight={1.5} textColor='white'>
+              Props
+            </Heading>
+            <List textColor='white'>
+              <Appear><ListItem>Component doesn't care where they come from</ListItem></Appear>
+              <Appear><ListItem>Important when integrating with frameworks</ListItem></Appear>
+            </List>
+          </Slide>
+
+          <Slide notes={`
+          `.trim()}>
+            <CodePane
+              lang='jsx'
+              source={require('raw!./props.example')}
+              margin='20px auto'
+            />
+          </Slide>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
           <Slide notes={`
           * Classic example: List of stuff

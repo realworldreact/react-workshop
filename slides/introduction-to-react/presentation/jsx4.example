@@ -1,0 +1,15 @@
+// This is all just javascript
+const isAdmin = false;
+
+// The link to the admin area will not re rendered
+const header = (
+  <header>
+    <img src='/images/logo.png' alt='Logo' />
+    <Nav>
+      <Link to='/home' />
+      <Link to='/producs' />
+      <Link to='/blog' />
+      {isAdmin && <Link to='/admin' />}
+    </Nav>
+  </header>
+);
