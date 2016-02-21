@@ -1,0 +1,2 @@
+const myDivElement = <div className="foo" />; // Create a div: <div class="foo"></div>
+ReactDOM.render(myDivElement, document.getElementById('example')); // Render it to the DOM

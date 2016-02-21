@@ -88,6 +88,7 @@ export default class Presentation extends React.Component {
             <Image src='http://i.giphy.com/qFYVytzjixPKo.gif' />
           </Slide>
 
+          {/* Start actual slideshow */}
 
           <Slide transition={['zoom']} bgColor='primary'>
             <Heading size={1} fit lineHeight={1} textColor={reactBlue}>
@@ -101,55 +102,74 @@ export default class Presentation extends React.Component {
           </Slide>
 
           <Slide notes={`
-          * At some point you're GOING to need forms
-          * Multiple ways to use forms
+          * No questions yet, more to come
           `.trim()}>
-            <Heading size={1} caps lineHeight={1.5}>
-              Basic Usage
+            <Heading size={4} caps lineHeight={1.5} textColor={reactBlue}>
+              An introduction to React
             </Heading>
             <List textColor='white'>
-              <Appear><ListItem>Forms & React</ListItem></Appear>
-              <Appear><ListItem>Form Events</ListItem></Appear>
-              <Appear><ListItem>State II</ListItem></Appear>
-              <Appear><ListItem>Array Methods</ListItem></Appear>
-              <Appear><ListItem>Loading Async JSON Data</ListItem></Appear>
+              <Appear><ListItem>Why React</ListItem></Appear>
+              <Appear><ListItem>JSX</ListItem></Appear>
+              <Appear><ListItem>Components & composition</ListItem></Appear>
+              <Appear><ListItem>Props</ListItem></Appear>
+              <Appear><ListItem>State</ListItem></Appear>
+              <Appear><ListItem>Children</ListItem></Appear>
+              <Appear><ListItem>Events</ListItem></Appear>
             </List>
           </Slide>
 
           <Slide notes={`
-          * Look at programmatic use of a form value
-          * Now that we can work with it we can do anythign we want (email collection for instance)
+          * Declarative means you no longer have to write dom plumbing
+          * Server folks should get this since its how they normally render
+          * XSS protection built in
+          * You can drop react into any existing app
+          * Its fun! This can not be stressed enough. This is good for morale and recruiting
+          * This is just the start. I will plan another talk for convincing your boss to adopt react
           `.trim()}>
             <Heading size={1} caps lineHeight={1.5}>
-              Forms & React
+              Why React
             </Heading>
+            <List textColor='white'>
+              <Appear><ListItem>Declarative</ListItem></Appear>
+              <Appear><ListItem>Painless iteration path</ListItem></Appear>
+              <Appear><ListItem>Fun</ListItem></Appear>
+            </List>
+          </Slide>
+
+          <Slide notes={`
+          * Very similar to HTML
+          `.trim()}>
+            <Heading size={1} caps lineHeight={1.5}>JSX</Heading>
             <Heading size={4} caps lineHeight={1.5} textColor='white'>
-              You're going to use them a lot
-            </Heading>
-            <FormValues />
-          </Slide>
-
-          {/* <Slide transition={['zoom', 'fade']} bgColor='primary' notes='<ul><li>talk about that</li><li>and that</li></ul>'> */}
-          {/*   <CodePane */}
-          {/*     lang='jsx' */}
-          {/*     source={require('raw!./FormValues.example')} */}
-          {/*     margin='20px auto' */}
-          {/*   /> */}
-          {/* </Slide> */}
-
-          <Slide notes={`
-          * We've already seen event handlers in react. Forms are much the same
-          * That last one, event target will prove to be very useful.
-          * Students may have heard that many React apps don't use jQuery. e.target is a really important helper in this regard.
-          `.trim()}>
-            <Heading size={1} caps lineHeight={1.5}>
-              More Events
+              A rich templating language
             </Heading>
             <List textColor='white'>
-              <Appear><ListItem>React standardizes events with <code>SyntheticEvent</code></ListItem></Appear>
-              <Appear><ListItem>Function just like you would expect</ListItem></Appear>
-              <Appear><ListItem>Can <code>preventDefault</code>, <code>stopPropagation</code> and access event <code>target</code></ListItem></Appear>
+              <Appear><ListItem>Tag Syntax (looks like HTML)</ListItem></Appear>
+              <Appear><ListItem>First class JavaScript</ListItem></Appear>
+              <Appear><ListItem>Has some gotchas, but not dealbreakers</ListItem></Appear>
             </List>
+          </Slide>
+
+          <Slide transition={['zoom', 'fade']} bgColor='primary'>
+            <CodePane
+              lang='jsx'
+              source={require('raw!./jsx.example')}
+              margin='20px auto'
+            />
+            <Appear>
+              <CodePane
+                lang='jsx'
+                source={require('raw!./jsx2.example')}
+                margin='20px auto'
+              />
+            </Appear>
+            <Appear>
+              <CodePane
+                lang='jsx'
+                source={require('raw!./jsx3.example')}
+                margin='20px auto'
+              />
+            </Appear>
           </Slide>
 
 

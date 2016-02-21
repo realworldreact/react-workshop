@@ -1,0 +1,16 @@
+const header = (
+  <header>
+    <img src='/images/logo.png' alt='Logo' />
+    <HorizontalNav>
+      <Link to='/home' />
+      <Link to='/producs' />
+      <Link to='/blog' />
+    </HorizontalNav>
+    <DropdownMenu>
+      <Link to='/account' />
+      <Link to='/faq' />
+      <Link to='/support' />
+      <Link to='/sign-out' />
+    </DropdownMenu>
+  </header>
+);
