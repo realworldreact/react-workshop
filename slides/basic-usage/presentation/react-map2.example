@@ -1,0 +1,17 @@
+// Some data....
+const shoppingList = [
+  { id: 1, val: 'Food' },
+  { id: 2, val: 'Drinks' },
+  { id: 3, val: 'Plates' },
+];
+
+// The render method...
+render() {
+  return (
+    <ul>
+      {shoppingList.map(item => (
+        <li key={item.id}>{item.val}</li>
+      ))}
+    </ul>
+  );
+}

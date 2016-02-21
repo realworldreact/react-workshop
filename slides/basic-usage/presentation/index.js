@@ -141,9 +141,67 @@ export default class Presentation extends React.Component {
             <TodoList />
           </Slide>
 
+          <Slide>
+            <Heading size={1} caps lineHeight={1.5}>
+              Array methods
+            </Heading>
+            <Heading size={4} caps lineHeight={1.5} textColor='white'>
+              A quick detour...
+            </Heading>
+          </Slide>
 
+          <Slide notes={`
+          * They should all know these already
+          * We won't be using reduce much here, but it appears often in the wild
+          `.trim()}>
+            <List textColor='white'>
+              <ListItem>Array.prototype.concat</ListItem>
+              <ListItem>Array.prototype.map</ListItem>
+              <ListItem>Array.prototype.filter</ListItem>
+              <ListItem>Array.prototype.reduce</ListItem>
+            </List>
+          </Slide>
 
+          <Slide notes={`
+          * Have they ever seen code like this?
+          * In the React world its very rare to se forEach
+          `.trim()}>
+            <CodePane
+              lang='jsx'
+              source={require('raw!./jquery-each.example')}
+              margin='20px auto'
+            />
+          </Slide>
 
+          <Slide notes={`
+          * You can also use foreach loops with react...
+          `.trim()}>
+            <CodePane
+              lang='jsx'
+              source={require('raw!./react-for-each.example')}
+              margin='20px auto'
+            />
+          </Slide>
+
+          <Slide notes={`
+          * Prefer map
+          `.trim()}>
+            <CodePane
+              lang='jsx'
+              source={require('raw!./react-map.example')}
+              margin='20px auto'
+            />
+          </Slide>
+
+          <Slide notes={`
+          * Write idiomatic code
+          `.trim()}>
+            <CodePane
+              lang='jsx'
+              source={require('raw!./react-map2.example')}
+              margin='20px auto'
+            />
+          </Slide>
 
 
 

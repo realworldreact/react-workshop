@@ -1,0 +1,24 @@
+// Some data....
+var shoppingList = [
+  { id: 1, val: 'Food' },
+  { id: 2, val: 'Drinks' },
+  { id: 3, val: 'Plates' },
+];
+
+// The render method...
+render() {
+  var components = [];
+
+  // Facepalm
+  for (var i = 0; i < shoppingList.length; i++) {
+    components.push(
+      <li key={shoppingList[i].id}>{shoppingList[i].val}</li>
+    );
+  }
+
+  return (
+    <ul>
+      {components}
+    </ul>
+  );
+}
