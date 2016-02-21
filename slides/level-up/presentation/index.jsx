@@ -17,8 +17,14 @@ import createTheme from 'spectacle/lib/themes/default';
 require('normalize.css');
 require('spectacle/lib/themes/default/index.css');
 
+const reactBlue = '#00d8ff';
 
-const theme = createTheme({ primary: 'lightgray' });
+const theme = createTheme({
+  primary: '#222',
+  secondary: reactBlue,
+  tertiary: 'white',
+  quartenary: reactBlue
+});
 
 export default class Presentation extends React.Component {
   render() {
@@ -75,7 +81,7 @@ export default class Presentation extends React.Component {
             </List>
           </Slide>
           <Slide>
-            <Heading size={ 4 }>
+            <Heading size={ 2 }>
               Controlled vs Uncontrolled Inputs
             </Heading>
             <Text>
@@ -113,13 +119,14 @@ export default class Presentation extends React.Component {
               <ListItem>
                 Controlled inputs using `value` and state
               </ListItem>
+              <ListItem>
                 React is responsible for the display of the component
+              </ListItem>
               <ListItem>
                 If value does not change, input field does not change
               </ListItem>
               <ListItem>
-                Allows for special manipulation of the input field using
-                Javascript
+                Manipulate the input field using Javascript
               </ListItem>
             </List>
           </Slide>
@@ -136,8 +143,14 @@ export default class Presentation extends React.Component {
             <Heading size={ 2 }>
               Container Pattern
             </Heading>
-            * Dump (presentational) components render state
-            * Smart (Container) components manage state and data fetching
+            <List>
+              <ListItem>
+                Dump (presentational) components render state
+              </ListItem>
+              <ListItem>
+                Smart (Container) components manage state and data fetching
+              </ListItem>
+            </List>
           </Slide>
           <Slide>
             <Heading size={ 2 }>
@@ -170,10 +183,10 @@ export default class Presentation extends React.Component {
             </Heading>
             <List>
               <ListItem>
-                No or very little view elements
+                few or no view elements of it's own
               </ListItem>
               <ListItem>
-                May be responsible for API calls
+                May be responsible for data fetching
               </ListItem>
               <ListItem>
                 May have internal state
@@ -208,7 +221,7 @@ export default class Presentation extends React.Component {
             </Heading>
             <List>
               <ListItem>
-                Children should no nothing about parent structure
+                Children should know nothing about parent structure
               </ListItem>
               <ListItem>
                 Children can send information up through callbacks
@@ -219,19 +232,25 @@ export default class Presentation extends React.Component {
             </List>
           </Slide>
           <Slide>
-            <Heading size={ 2 }>
+            <CodePane
+              lang='jsx'
+              source={require('raw!../assets/passing-callbacks.example')} />
+          </Slide>
+          <Slide>
+            <Heading size={ 1 }>
+              Exercise
             </Heading>
+            <Heading size={ 2 }>
+              Redit Fetcher: Add real time filtering
+            </Heading>
+            <hr />
+            <CodePane
+              lang='js'
+              source={require('raw!../assets/filtering.example')} />
           </Slide>
           <Slide>
             <Heading size={ 2 }>
-            </Heading>
-          </Slide>
-          <Slide>
-            <Heading size={ 2 }>
-            </Heading>
-          </Slide>
-          <Slide>
-            <Heading size={ 2 }>
+              Questions?
             </Heading>
           </Slide>
         </Deck>

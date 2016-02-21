@@ -1,0 +1,3 @@
+const posts = this.props.posts.filter(x => {
+  return x.title.toLowerCase().indexOf(filter) !== -1;
+});
