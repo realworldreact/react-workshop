@@ -10,8 +10,8 @@
 * JSX
 * Components & composition
 * Props
-* Children
 * State
+* Children
 * Event handling basics
 
 ^ Fairly quick slide since all will be explained in time
@@ -25,23 +25,49 @@
 * Declarative > Imperative
 * Composability
 * Reusability
-* Render on client and server
+* Render everywhere
+
+^ With React you can learn once and create UIs for desktop, mobile and the web. You can also render on the server for SEO + usability wins.
 
 ^ Probably don't need much convincing since you're already here, but it's good to be able to vocalize why this is good tech
+
+^ Easier to reason about
+
+^ Less prone to breakage
+
+^ Forces you to architect your app. I.e. you have to decide what state looks like. You can still do a bad job, but at least you're concsiously thinking about it.
+
+---
+
+# Why React Examples...
+
+^ Show examples of mobile apps, desktop apps, web apps
+
+^ Declarative > imperative: A familiar paradigm to server-side folks. Just re-render when things change
 
 ---
 
 # **JSX**
 
 * Tag syntax
-  * Exceptions: `for` and `class`
 * Props !== HTML attributes
 * Brackets
 * Gotchas
-  * If / else
+  * `htmlFor` and `className`
+  * Expressions only. i.e. no more If / else
   * More: https://facebook.github.io/react/docs/jsx-gotchas.html
 
+^ Rich templating language
+
+^ First class JS support. Use any and all JS you like to construct the UI
+
+^ Leverages your existing knowledge (this is HUGE!)
+
 ^ Very similar to HTML, in fact almost exactly the same in terms of tag syntax
+
+---
+
+# JSX Examples...
 
 ---
 
@@ -112,6 +138,10 @@ Markup & view-related functionality together at last
 
 ---
 
+# Encapsulation Examples...
+
+---
+
 # **Composition**
 
 Combine and re-use components
@@ -125,6 +155,10 @@ Combine and re-use components
 ^ Can export components as modules
 
 ^ Someone likely already implemented something you need
+
+---
+
+# Composition Examples...
 
 ---
 
@@ -277,7 +311,7 @@ const Alert = React.createClass({
 
 ^ This will feel very odd for anyone coming from a Backbone background. 
 
-^ Basically works like old-schole `onclick` attributes work: You attach directly to an element
+^ Basically works like old-school `onclick` attributes work: You attach directly to an element
 
 ---
 
@@ -288,6 +322,14 @@ const Alert = React.createClass({
   Click Me!
 </button>
 ```
+
+---
+
+# Event handling exaples
+
+^ Just some more examples to get everyone warmed up
+
+^ Link to the event docs page
 
 ---
 
