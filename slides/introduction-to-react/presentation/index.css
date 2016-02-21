@@ -44,5 +44,6 @@ button,
 input,
 textarea {
   appearance: none;
+  outline: none;
 }
 

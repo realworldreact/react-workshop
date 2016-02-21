@@ -110,7 +110,6 @@ export default class Presentation extends React.Component {
               <Appear><ListItem>Components & composition</ListItem></Appear>
               <Appear><ListItem>Props</ListItem></Appear>
               <Appear><ListItem>State</ListItem></Appear>
-              <Appear><ListItem>Children</ListItem></Appear>
               <Appear><ListItem>Events</ListItem></Appear>
             </List>
           </Slide>
