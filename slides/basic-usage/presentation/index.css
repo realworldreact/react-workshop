@@ -1,0 +1,7 @@
+.spectacle-presenter-notes {
+  white-space: pre-line;
+}
+
+pre, input, textarea {
+  color: #333;
+}
