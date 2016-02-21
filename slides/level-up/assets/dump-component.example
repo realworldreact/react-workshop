@@ -1,0 +1,17 @@
+// dumb component
+// https://jsbin.com/runuwi/edit?js,output
+var Post = React.createClass({
+  render: function() {
+    var href = this.props.href;
+    var title = this.props.title;
+    return (
+      <div className='Post'>
+        <a
+          href={ href }
+          target='_blank'>
+          { title }
+        </a>
+      </div>
+    );
+  }
+});

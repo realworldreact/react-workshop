@@ -1,0 +1,20 @@
+const FormContainer = React.createClass({
+  getInitialState: function() {
+    return {
+      filter: ''
+    };
+  },
+
+  updateFilter: function(e) {
+    var newFilter = e.target.value;
+    this.setState({ filter: newFilter });
+  },
+
+  render: function() {
+    return (
+      <MyForm
+        filterValue={ this.state.filter }
+        updateFilter={ this.updateFilter } />
+    );
+  }
+});

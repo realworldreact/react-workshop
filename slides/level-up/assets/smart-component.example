@@ -1,0 +1,32 @@
+// https://jsbin.com/tebegi/edit?js,output
+var App = React.createClass({
+  getInitialState: function() {
+    return {
+      posts: []
+    };
+  },
+
+  componentDidMount: function() {
+    fetch(ENDPOINT)
+      .then(res =>  res.json())
+      .then(json => json.data.children)
+      .then(posts => this.setState({ posts: posts }) )
+      .catch(err => console.error('There was an error fetching.', err));
+
+  },
+
+  render: function() {
+    const { posts } = this.state;
+    return (
+      <div className='App'>
+        { posts.length ? (
+          <div className='posts'>
+            { posts.map((post, i) => (
+              <Post key={i} post={post} />
+            )) }
+          </div>
+        ) : <h2>No reddit posts</h2>}
+      </div>
+    );
+  }
+});
