@@ -1,0 +1,24 @@
+const Toggle = React.createClass({
+  getInitialState() {
+    return {
+      isOn: false,
+    };
+  },
+
+  toggle(e) {
+    this.setState({
+      isOn: !this.state.isOn,
+    });
+  },
+
+  render() {
+    const { isOn } = this.state;
+    return (
+      <div
+        style={{ color: isOn ? 'green' : 'black' }}
+        onClick={this.toggle}>
+        {isOn ? 'On' : 'Off'}
+      </div>
+    );
+  },
+});

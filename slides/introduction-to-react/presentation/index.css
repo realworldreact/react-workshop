@@ -40,3 +40,9 @@ li code {
   max-height: 100%;
 }
 
+button,
+input,
+textarea {
+  appearance: none;
+}
+

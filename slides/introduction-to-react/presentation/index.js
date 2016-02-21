@@ -37,10 +37,7 @@ const images = {
 
 preloader(images);
 
-import { FormValues } from './FormValues.js';
-import { TodoList } from './TodoList.js';
-import { AsyncLoader } from './AsyncLoader.js';
-import { RedditFetch } from './RedditFetch.js';
+import { CounterContainer } from './Counter.js';
 
 export default class Presentation extends React.Component {
   render() {
@@ -344,117 +341,80 @@ export default class Presentation extends React.Component {
             />
           </Slide>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
           <Slide notes={`
-          * Classic example: List of stuff
-          * Go into the source of TodoList.js. Show them around
-          * Live code the reset button
+            * State is used to model interactivity and change over time
+            * State should be as small as possible
+            * State should be JSON serializable
           `.trim()}>
-            <Heading size={1} caps lineHeight={1.5}>
-              List of stuff
-            </Heading>
-            <TodoList />
-          </Slide>
-
-          <Slide>
-            <Heading size={1} caps lineHeight={1.5}>
-              To the text editor!
-            </Heading>
-          </Slide>
-
-          <Slide>
-            <Heading size={1} caps lineHeight={1.5}>
-              Array methods
-            </Heading>
             <Heading size={4} caps lineHeight={1.5} textColor='white'>
-              A quick detour...
+              State
             </Heading>
+            <List textColor='white'>
+              <Appear><ListItem>Interactivity</ListItem></Appear>
+              <Appear><ListItem>Change over time</ListItem></Appear>
+            </List>
+            <Appear>
+              <List textColor='white'>
+                <Appear><ListItem>Value of a <code>{'<input />'}</code> tag</ListItem></Appear>
+                <Appear><ListItem>Whether the UI is loading or not</ListItem></Appear>
+                <Appear><ListItem>Unread message count</ListItem></Appear>
+              </List>
+            </Appear>
           </Slide>
 
           <Slide notes={`
-          * They should all know these already
-          * We won't be using reduce much here, but it appears often in the wild
           `.trim()}>
+            <CodePane
+              lang='jsx'
+              source={require('raw!./state.example')}
+              margin='20px auto'
+            />
+          </Slide>
+
+          <Slide notes={`
+          `.trim()}>
+            <Heading size={4} fit caps lineHeight={1} textColor='white'>
+              Rule of thumb
+            </Heading>
+            <Appear>
+              <Heading size={1} fit caps lineHeight={1} textColor={reactBlue}>
+                Use props...
+              </Heading>
+            </Appear>
+            <Appear>
+              <Heading size={4} fit caps lineHeight={1} textColor='white'>
+                ...until you need state
+              </Heading>
+            </Appear>
+          </Slide>
+
+          <Slide notes={`
+          `.trim()}>
+            <Heading size={1} caps lineHeight={1.5} textColor='white'>
+              Events
+            </Heading>
             <List textColor='white'>
-              <ListItem>Array.prototype.concat</ListItem>
-              <ListItem>Array.prototype.map</ListItem>
-              <ListItem>Array.prototype.filter</ListItem>
-              <ListItem>Array.prototype.reduce</ListItem>
+              <Appear><ListItem>Attached directly to components</ListItem></Appear>
+              <Appear><ListItem>Aggregated by React</ListItem></Appear>
+              <Appear><ListItem>Standardized across all browsers</ListItem></Appear>
             </List>
           </Slide>
 
-
-
-
-
-
-
-
-
-          <Slide>
-            <Heading size={1} caps lineHeight={1.5}>
-              Loading Async JSON Data
-            </Heading>
-          </Slide>
-
           <Slide notes={`
-          * Walk through the code
           `.trim()}>
-            <AsyncLoader />
+            <CodePane
+              lang='jsx'
+              source={require('raw!./events.example')}
+              margin='20px auto'
+            />
           </Slide>
-
-          <Slide notes={`
-          * Walk through the code
-          * Explain how contrived in-memory data is
-          `.trim()}>
-            <Heading size={1} caps lineHeight={1.5}>
-              To the text editor!
-            </Heading>
-          </Slide>
-
-
-
-
 
           <Slide>
             <Heading size={1} caps fit lineHeight={1.5}>
               Exercise
             </Heading>
             <Heading size={1} caps fit lineHeight={1.5}>
-              Fetch from the Reddit API
+              Build a simple counter
             </Heading>
           </Slide>
 
@@ -462,22 +422,9 @@ export default class Presentation extends React.Component {
           * Explain the project, demo the app
           `.trim()}>
             <Heading size={1} caps lineHeight={1.5}>
-              Reddit API
+              Counter
             </Heading>
-            <Heading size={1} fit lineHeight={1.5} textFont='monospace'>
-              <Link style={{ color: '#dadada' }} href='https://www.reddit.com/r/reactjs.json' target='_blank'>
-                https://www.reddit.com/r/<span style={{ color: reactBlue }}>SUBREDDIT</span>.json
-              </Link>
-            </Heading>
-          </Slide>
-
-          <Slide notes={`
-          * Explain the project, demo the app
-          `.trim()}>
-            <Heading size={1} caps lineHeight={1.5}>
-              Reddit Fetcher
-            </Heading>
-            <RedditFetch />
+            <CounterContainer />
           </Slide>
 
           <Slide transition={['spin', 'slide']}>
