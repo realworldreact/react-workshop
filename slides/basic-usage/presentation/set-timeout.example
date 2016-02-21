@@ -1,0 +1,11 @@
+componentDidMount() {
+  setTimeout(() => {
+    this.setState({
+      items: [
+        { id: 1, label: 'Item One' },
+        { id: 2, label: 'Item Two' },
+        { id: 3, label: 'Item Three' },
+      ],
+    });
+  }, 2000);
+},

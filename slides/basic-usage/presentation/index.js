@@ -39,6 +39,8 @@ preloader(images);
 
 import { FormValues } from './FormValues.js';
 import { TodoList } from './TodoList.js';
+import { AsyncLoader } from './AsyncLoader.js';
+import { RedditFetch } from './RedditFetch.js';
 
 export default class Presentation extends React.Component {
   render() {
@@ -47,7 +49,6 @@ export default class Presentation extends React.Component {
         <Deck transition={['zoom', 'slide']} transitionDuration={500}>
 
           <Slide transition={['zoom']} bgColor='primary'>
-            <Image width={100} src={images.logo} />
             <Heading size={1} fit lineHeight={1} textColor={reactBlue}>
               React.js
             </Heading>
@@ -70,8 +71,7 @@ export default class Presentation extends React.Component {
               <Appear><ListItem>Form Events</ListItem></Appear>
               <Appear><ListItem>State II</ListItem></Appear>
               <Appear><ListItem>Array Methods</ListItem></Appear>
-              <Appear><ListItem>Displaying JSON Data</ListItem></Appear>
-              <Appear><ListItem>Async Data Fetching</ListItem></Appear>
+              <Appear><ListItem>Loading Async JSON Data</ListItem></Appear>
             </List>
           </Slide>
 
@@ -143,6 +143,12 @@ export default class Presentation extends React.Component {
 
           <Slide>
             <Heading size={1} caps lineHeight={1.5}>
+              To the text editor!
+            </Heading>
+          </Slide>
+
+          <Slide>
+            <Heading size={1} caps lineHeight={1.5}>
               Array methods
             </Heading>
             <Heading size={4} caps lineHeight={1.5} textColor='white'>
@@ -203,122 +209,83 @@ export default class Presentation extends React.Component {
             />
           </Slide>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          <Slide transition={['slide']} bgColor='black' notes='You can even put notes on your slide. How awesome is that?'>
-            <Image src={images.kat.replace('/', '')} margin='0px auto 40px' height='293px'/>
-            <Heading size={2} caps fit textColor='primary' textFont='primary'>
-              Wait what?
+          <Slide>
+            <Heading size={1} caps lineHeight={1.5}>
+              Loading Async JSON Data
             </Heading>
           </Slide>
 
-
-          <Slide transition={['slide']} bgImage={images.city.replace('/', '')} bgDarken={0.75}>
-            <Appear fid='1'>
-              <Heading size={1} caps fit textColor='primary'>
-                Full Width
-              </Heading>
-            </Appear>
-            <Appear fid='2'>
-              <Heading size={1} caps fit textColor='tertiary'>
-                Adjustable Darkness
-              </Heading>
-            </Appear>
-            <Appear fid='3'>
-              <Heading size={1} caps fit textColor='primary'>
-                Background Imagery
-              </Heading>
-            </Appear>
+          <Slide notes={`
+          * Walk through the code
+          `.trim()}>
+            <AsyncLoader />
           </Slide>
 
-          <Slide transition={['zoom', 'fade']} bgColor='primary'>
-            <Heading caps fit>Flexible Layouts</Heading>
-            <Layout>
-              <Fill>
-                <Heading size={4} caps textColor='secondary' bgColor='white' margin={10}>
-                  Left
-                </Heading>
-              </Fill>
-              <Fill>
-                <Heading size={4} caps textColor='secondary' bgColor='white' margin={10}>
-                  Right
-                </Heading>
-              </Fill>
-            </Layout>
-          </Slide>
-
-          <Slide transition={['slide']} bgColor='black'>
-            <BlockQuote>
-              <Quote>Wonderfully formatted quotes</Quote>
-              <Cite>Ken Wheeler</Cite>
-            </BlockQuote>
-          </Slide>
-
-          <Slide transition={['spin', 'zoom']} bgColor='tertiary'>
-            <Heading caps fit size={1} textColor='primary'>
-              Inline Markdown
-            </Heading>
-            <Markdown>
-              {`
-![Markdown Logo](${images.markdown.replace('/', '')})
-
-You can write inline images, [Markdown Links](http://commonmark.org), paragraph text and most other markdown syntax
-* Lists too!
-* With ~~strikethrough~~ and _italic_
-* And lets not forget **bold**
-              `}
-            </Markdown>
-          </Slide>
-
-          <Slide transition={['slide', 'spin']} bgColor='primary'>
-            <Heading caps fit size={1} textColor='tertiary'>
-              Smooth
-            </Heading>
-            <Heading caps fit size={1} textColor='secondary'>
-              Combinable Transitions
+          <Slide notes={`
+          * Walk through the code
+          * Explain how contrived in-memory data is
+          `.trim()}>
+            <Heading size={1} caps lineHeight={1.5}>
+              To the text editor!
             </Heading>
           </Slide>
 
-          <Slide transition={['fade']} bgColor='secondary' textColor='primary'>
-            <List>
-              <Appear><ListItem>Inline style based theme system</ListItem></Appear>
-              <Appear><ListItem>Autofit text</ListItem></Appear>
-              <Appear><ListItem>Flexbox layout system</ListItem></Appear>
-              <Appear><ListItem>React-Router navigation</ListItem></Appear>
-              <Appear><ListItem>PDF export</ListItem></Appear>
-              <Appear><ListItem>And...</ListItem></Appear>
-            </List>
+          <Slide notes={`
+          * This is the heart of the async data loading. Explain it
+          * But couldn't we just replace this with ajax...?
+          `.trim()}>
+            <CodePane
+              lang='jsx'
+              source={require('raw!./set-timeout.example')}
+              margin='20px auto'
+            />
           </Slide>
 
-          <Slide transition={['slide']} bgColor='primary'>
-            <Heading size={1} caps fit textColor='tertiary'>
-              Your presentations are interactive
+          <Slide notes={`
+          * Of course we can!
+          `.trim()}>
+            <CodePane
+              lang='jsx'
+              source={require('raw!./fake-api.example')}
+              margin='20px auto'
+            />
+          </Slide>
+
+          <Slide>
+            <Heading size={1} caps fit lineHeight={1.5}>
+              Exercise
+            </Heading>
+            <Heading size={1} caps fit lineHeight={1.5}>
+              Fetch from the Reddit API
             </Heading>
           </Slide>
 
-          <Slide transition={['spin', 'slide']} bgColor='tertiary'>
-            <Heading size={1} caps fit lineHeight={1.5} textColor='primary'>
-              Made with love in Seattle by
+          <Slide notes={`
+          * Explain the project, demo the app
+          `.trim()}>
+            <Heading size={1} caps lineHeight={1.5}>
+              Reddit API
             </Heading>
-            <Link href='http://www.formidablelabs.com'><Image width='100%' src={images.logo}/></Link>
+            <Heading size={1} fit lineHeight={1.5} textFont='monospace'>
+              <Link style={{ color: '#dadada' }} href='https://www.reddit.com/r/reactjs.json' target='_blank'>
+                https://www.reddit.com/r/<span style={{ color: reactBlue }}>SUBREDDIT</span>.json
+              </Link>
+            </Heading>
+          </Slide>
+
+          <Slide notes={`
+          * Explain the project, demo the app
+          `.trim()}>
+            <Heading size={1} caps lineHeight={1.5}>
+              Reddit Fetcher
+            </Heading>
+            <RedditFetch />
+          </Slide>
+
+          <Slide transition={['spin', 'slide']}>
+            <Heading size={1} caps fit lineHeight={1.5}>
+              Questions?
+            </Heading>
           </Slide>
 
         </Deck>
