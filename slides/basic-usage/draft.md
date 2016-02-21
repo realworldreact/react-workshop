@@ -1,6 +1,8 @@
 # **React.js**
 
-## Basics
+## Basic Usage
+
+^ Some common use cases to get the students ready
 
 ---
 
