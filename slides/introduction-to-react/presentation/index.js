@@ -85,6 +85,10 @@ export default class Presentation extends React.Component {
             <Image src='http://i.giphy.com/qFYVytzjixPKo.gif' />
           </Slide>
 
+          <Slide transition={['zoom']} bgColor='primary'>
+            <Image width={600} src={images.logo} />
+          </Slide>
+
           {/* Start actual slideshow */}
 
           <Slide transition={['zoom']} bgColor='primary'>
@@ -352,6 +356,9 @@ export default class Presentation extends React.Component {
               <Appear><ListItem>Interactivity</ListItem></Appear>
               <Appear><ListItem>Change over time</ListItem></Appear>
             </List>
+            <Heading size={4} caps lineHeight={1.5} textColor='white'>
+              Examples
+            </Heading>
             <Appear>
               <List textColor='white'>
                 <Appear><ListItem>Value of a <code>{'<input />'}</code> tag</ListItem></Appear>
