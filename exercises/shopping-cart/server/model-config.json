@@ -35,5 +35,9 @@
   "fruit": {
     "dataSource": "db",
     "public": true
+  },
+  "cart": {
+    "dataSource": "db",
+    "public": true
   }
 }
