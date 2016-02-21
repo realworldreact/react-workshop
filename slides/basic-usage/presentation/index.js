@@ -38,6 +38,7 @@ const images = {
 preloader(images);
 
 import { FormValues } from './FormValues.js';
+import { TodoList } from './TodoList.js';
 
 export default class Presentation extends React.Component {
   render() {
@@ -74,11 +75,14 @@ export default class Presentation extends React.Component {
             </List>
           </Slide>
 
-          <Slide>
+          <Slide notes={`
+          * Look at programmatic use of a form value
+          * Now that we can work with it we can do anythign we want (email collection for instance)
+          `.trim()}>
             <Heading size={1} caps lineHeight={1.5}>
               Forms & React
             </Heading>
-            <Heading size={4} caps lineHeight={1.5}>
+            <Heading size={4} caps lineHeight={1.5} textColor='white'>
               You're going to use them a lot
             </Heading>
             <FormValues />
@@ -87,9 +91,8 @@ export default class Presentation extends React.Component {
           <Slide transition={['zoom', 'fade']} bgColor='primary' notes='<ul><li>talk about that</li><li>and that</li></ul>'>
             <CodePane
               lang='jsx'
-              margin='20px auto'
-              fit
               source={require('raw!./FormValues.example')}
+              margin='20px auto'
             />
           </Slide>
 
@@ -99,25 +102,68 @@ export default class Presentation extends React.Component {
           * Students may have heard that many React apps don't use jQuery. e.target is a really important helper in this regard.
           `.trim()}>
             <Heading size={1} caps lineHeight={1.5}>
-              More Events 🎆
+              More Events
             </Heading>
             <List textColor='white'>
-              <Appear><ListItem>React standardizes events with <Code>SyntheticEvent</Code></ListItem></Appear>
+              <Appear><ListItem>React standardizes events with <code>SyntheticEvent</code></ListItem></Appear>
               <Appear><ListItem>Function just like you would expect</ListItem></Appear>
-              <Appear><ListItem>Can `preventDefault`, `stopPropagation` and access event `target`</ListItem></Appear>
+              <Appear><ListItem>Can <code>preventDefault</code>, <code>stopPropagation</code> and access event <code>target</code></ListItem></Appear>
             </List>
           </Slide>
-
-
-
 
           <Slide transition={['zoom', 'fade']} bgColor='primary' notes='<ul><li>talk about that</li><li>and that</li></ul>'>
             <CodePane
               lang='jsx'
-              source={require('raw!../assets/deck.example')}
+              source={require('raw!./FormValues2.example')}
               margin='20px auto'
             />
           </Slide>
+
+          <Slide notes={`
+          * Turns out state can be a good place to store lists that change
+          `.trim()}>
+            <Heading size={1} caps lineHeight={1.5}>
+              State II
+            </Heading>
+            <Heading size={4} caps lineHeight={1.5} textColor='white'>
+              Eventually you're coing to want to render a list
+            </Heading>
+          </Slide>
+
+          <Slide notes={`
+          * Classic example: List of stuff
+          * Go into the source of TodoList.js. Show them around
+          * Live code the reset button
+          `.trim()}>
+            <Heading size={1} caps lineHeight={1.5}>
+              List of stuff
+            </Heading>
+            <TodoList />
+          </Slide>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
           <Slide transition={['slide']} bgColor='black' notes='You can even put notes on your slide. How awesome is that?'>
             <Image src={images.kat.replace('/', '')} margin='0px auto 40px' height='293px'/>

@@ -5,3 +5,10 @@
 pre, input, textarea {
   color: #333;
 }
+
+li code {
+  background: #666;
+  color: #dadada;
+  padding: 3px 8px;
+  display: inline-block;
+}
