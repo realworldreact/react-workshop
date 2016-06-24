@@ -1,5 +1,6 @@
 import React from 'react';
 import preloader from 'spectacle/lib/utils/preloader';
+import CodeSlide from 'spectacle-code-slide';
 import {
   Appear,
   BlockQuote,
@@ -43,46 +44,10 @@ export default class Presentation extends React.Component {
   render() {
     return (
       <Spectacle theme={theme}>
-        <Deck transition={['zoom', 'slide']} transitionDuration={500}>
+        <Deck progress='bar' controls={false} transition={['zoom', 'slide']} transitionDuration={500}>
 
           <Slide transition={['zoom']} bgColor='primary'>
             <Image width={600} src={images.logo} />
-          </Slide>
-
-          <Slide transition={['slide']} bgColor='primary'>
-            <Heading size={4} textColor='white'>Building real-world applications with React.js</Heading>
-            <p>With</p>
-            <Heading size={4} textColor='white'>Ian Sinnott & Berkeley Martinez</Heading>
-            <p>Sponsored by</p>
-
-            <div className='logos'>
-              <img src={require('../assets/makersquare.png')} />
-              <img src={require('../assets/RCG-logo.png')} />
-              <img src={require('../assets/talener.png')} />
-            </div>
-          </Slide>
-
-          <Slide transition={['slide']} bgColor='primary'>
-            <div className='logos secondary'>
-              <img className='makersquare' src={require('../assets/makersquare.png')} />
-            </div>
-          </Slide>
-
-          <Slide transition={['slide']} bgColor='primary'>
-            <div className='logos secondary'>
-              <img src={require('../assets/talener.png')} />
-            </div>
-          </Slide>
-
-          <Slide transition={['slide']} bgColor='primary'>
-            <div className='logos secondary'>
-              <img src={require('../assets/RCG-logo.png')} />
-            </div>
-          </Slide>
-
-          <Slide transition={['slide']} bgColor='primary'>
-            <Heading size={4} textColor='white'>Now let's get to work</Heading>
-            <Image src='http://i.giphy.com/qFYVytzjixPKo.gif' />
           </Slide>
 
           <Slide transition={['zoom']} bgColor='primary'>
@@ -150,36 +115,22 @@ export default class Presentation extends React.Component {
             </List>
           </Slide>
 
-          <Slide
+          <CodeSlide
             transition={['zoom', 'fade']}
-            bgColor='primary'
-            notes={`
-              * A lot to take in here
-              * class v className
-              * Auto closing tags
-              * Rendering to the dom
-              * Note that only the render call actually creates dom. the rest is just a descriptor
-            `.trim()}>
-            <CodePane
-              lang='jsx'
-              source={require('raw!./jsx.example')}
-              margin='20px auto'
-            />
-            <Appear>
-              <CodePane
-                lang='jsx'
-                source={require('raw!./jsx2.example')}
-                margin='20px auto'
-              />
-            </Appear>
-            <Appear>
-              <CodePane
-                lang='jsx'
-                source={require('raw!./jsx3.example')}
-                margin='20px auto'
-              />
-            </Appear>
-          </Slide>
+            lang='jsx'
+            code={require('raw!./jsx.example')}
+            margin='20px auto'
+            ranges={[
+              { loc: [0, 1], title: "JSX" },
+              { loc: [0, 5], note: "Render to the dom" },
+              { loc: [6, 20] },
+              { loc: [21, 39], title: 'Composition' },
+              { loc: [26, 31], note: 'HorizontalNav' },
+              { loc: [31, 37], note: 'DropdownMenu' },
+              { loc: [21, 39] },
+              // ...
+            ]}
+          />
 
           <Slide
             transition={['zoom', 'fade']}
@@ -224,13 +175,14 @@ export default class Presentation extends React.Component {
             <Heading size={4} caps lineHeight={1.5} textColor='white'>
               Components: Groups of JSX and JavaScript
             </Heading>
-            <Appear>
-              <CodePane
-                lang='jsx'
-                source={require('raw!./component.example')}
-                margin='20px auto'
-              />
-            </Appear>
+          </Slide>
+
+          <Slide>
+            <CodePane
+              lang='jsx'
+              source={require('raw!./component.example')}
+              margin='20px auto'
+            />
           </Slide>
 
           <Slide notes={`

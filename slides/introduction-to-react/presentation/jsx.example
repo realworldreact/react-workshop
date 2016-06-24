@@ -1,2 +1,39 @@
-const myDivElement = <div className="foo" />; // Create a div: <div class="foo"></div>
-ReactDOM.render(myDivElement, document.getElementById('example')); // Render it to the DOM
+const myDivElement = <div className="foo" />;
+ReactDOM.render(
+  myDivElement,
+  document.getElementById('example')
+);
+
+const form = (
+  <form action='/login' method='post'>
+    <input
+      name='email'
+      type='email'
+      placeholder='Email' />
+    <input
+      name='password'
+      type='password'
+      placeholder='Password' />
+    <button
+      type='submit'>Log In</button>
+  </form>
+);
+
+const header = (
+  <header>
+    <img
+      src='/images/logo.png'
+      alt='Logo' />
+    <HorizontalNav>
+      <Link to='/home' />
+      <Link to='/producs' />
+      <Link to='/blog' />
+    </HorizontalNav>
+    <DropdownMenu>
+      <Link to='/account' />
+      <Link to='/faq' />
+      <Link to='/support' />
+      <Link to='/sign-out' />
+    </DropdownMenu>
+  </header>
+);
