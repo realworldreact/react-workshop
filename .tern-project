@@ -1,0 +1,14 @@
+{
+  "ecmaVersion": 6,
+  "libs": [],
+  "loadEagerly": [
+    "presentation/**/*.js"
+  ],
+  "plugins": {
+    "commonjs": {},
+    "es_modules": {},
+    "node": {},
+    "node_resolve": {},
+    "complete_strings": {}
+  }
+}
