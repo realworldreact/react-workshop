@@ -3,14 +3,13 @@ import 'normalize.css';
 
 // Import CSS and favicon
 import './App.css';
-import './favicon.ico';
 
-const Counter = React.createClass({
-  propTypes: {
+class Counter extends React.Component {
+  static propTypes = {
     count: PropTypes.number.isRequired,
     onIncrement: PropTypes.func.isRequired,
     onDecrement: PropTypes.func.isRequired,
-  },
+  };
 
   render() {
     const { count, onIncrement, onDecrement } = this.props;
@@ -25,31 +24,35 @@ const Counter = React.createClass({
         </div>
       </div>
     );
-  },
-});
+  }
+}
 
-export const App = React.createClass({
-  getInitialState() {
-    return {
-      count: 0,
-    };
-  },
-  componentDidMount() {
+export class App extends React.Component {
+  state = {
+    count: 0,
+  };
+
+  constructor(props) {
+    super(props);
     document.addEventListener('keydown', this.handleKeyDown);
-  },
+  }
+
   componentWillUnmount() {
     document.removeEventListener('keydown', this.handleKeyDown);
-  },
-  onIncrement() {
+  }
+
+  onIncrement = () => {
     const { count } = this.state;
     this.setState({ count: count + 1 });
-  },
-  onDecrement() {
+  };
+
+  onDecrement = () => {
     const { count } = this.state;
     if (count === 0) return; // Don't go below zero
     this.setState({ count: count - 1 });
-  },
-  handleKeyDown(e) {
+  };
+
+  handleKeyDown = (e) => {
     const LEFT = 37;
     const RIGHT = 39;
     const UP = 38;
@@ -62,15 +65,16 @@ export const App = React.createClass({
     } else {
       return; // Do nothing
     }
-  },
+  };
+
   render() {
     return (
       <div className='App'>
         <Counter
           onIncrement={this.onIncrement}
           onDecrement={this.onDecrement}
-          {...this.state} />
+          count={this.state.count} />
       </div>
     );
-  },
-});
+  }
+}
