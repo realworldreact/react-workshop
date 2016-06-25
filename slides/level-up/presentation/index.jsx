@@ -13,6 +13,7 @@ import {
 import createTheme from 'spectacle/lib/themes/default';
 import CodeSlide from 'spectacle-code-slide';
 import UncontrolledForm from './Uncontrolled-Form.jsx';
+import ControlledForm from './Controlled-Form.jsx';
 
 // Require CSS
 require('normalize.css');
@@ -120,8 +121,8 @@ export default class Presentation extends React.Component {
               { loc: [18, 25] },
               { loc: [18, 19], title: 'A Function' },
               { loc: [9, 14] },
-              { loc: [11, 12], note: 'Grab the value' },
-              { loc: [12, 13], note: 'Save the value' },
+              { loc: [11, 12], note: 'grab the value' },
+              { loc: [12, 13], note: 'store the value on submit' },
               { loc: [27, 32], note: 'display the value on next render' }
             ]}
             textSize={ 20 }
@@ -133,30 +134,51 @@ export default class Presentation extends React.Component {
           <Slide>
             <List>
               <ListItem>
-                Controlled inputs using `value` and state
+                Value comes from props
               </ListItem>
               <ListItem>
-                React is responsible for the display of the component
+                Unchangable
               </ListItem>
               <ListItem>
-                If value does not change, input field does not change
-              </ListItem>
-              <ListItem>
-                Manipulate the input field using Javascript
+                Manipulatable with JavaScript!
               </ListItem>
             </List>
           </Slide>
+          <CodeSlide
+            code={ require('raw!../assets/controlled.example') }
+            lang='jsx'
+            ranges={[
+              { loc: [25, 33] },
+              { loc: [30, 31], title: 'Input Component Value'},
+              { loc: [30, 31], note: 'a string'},
+              { loc: [28, 29], title: 'Input onChange Handler' },
+              { loc: [28, 29], note: 'a function' },
+              { loc: [17, 21], note: 'store value on every keystroke' },
+              { loc: [6, 10], note: 'initial value for input components' }
+            ]}
+            textSize={ 20 }
+            transition={['zoom', 'fade']}
+          />
           <Slide>
-            <Link
-              href='https://jsbin.com/gacomo/edit?js,console,output'
-              target='_blank'
-              >
-              <CodePane
-                lang='jsx'
-                source={require('raw!../assets/controlled.example')}
-              />
-            </Link>
+            <ControlledForm />
           </Slide>
+          <CodeSlide
+            code={ require(
+              'raw!../assets/controlled-with-url-formatter.example'
+            ) }
+            lang='jsx'
+            ranges={[
+              { loc: [2, 3] },
+              { loc: [5, 24] },
+              { loc: [6, 11] },
+              { loc: [20, 21] },
+              { loc: [22, 23] },
+              { loc: [39, 43] },
+              { loc: [41, 42], note: 'format value before storing value' }
+            ]}
+            textSize={ 20 }
+            transition={['zoom', 'fade']}
+          />
           <Slide>
             <Heading size={ 2 }>
               Container Pattern

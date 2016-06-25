@@ -1,5 +1,27 @@
 import React from 'react';
 import { Text } from 'spectacle';
+import normalizeUrl from 'normalize-url';
+
+// formatUrl(url: String) => String
+export function formatUrl(url) {
+  if (
+    typeof url === 'string' &&
+    url.length > 4 &&
+    url.indexOf('.') !== -1
+  ) {
+    // prevent trailing / from being stripped during typing
+    let lastChar = '';
+    if (url.substring(url.length - 1) === '/') {
+      lastChar = '/';
+    }
+    // prevent normalize-url from stripping last dot during typing
+    if (url.substring(url.length - 1) === '.') {
+      lastChar = '.';
+    }
+    return normalizeUrl(url) + lastChar;
+  }
+  return url;
+}
 
 export default React.createClass({
   displayName: 'ControlledInput',
@@ -17,12 +39,13 @@ export default React.createClass({
 
   handleChange: function(e) {
     const value = e.target.value;
-    this.setState({ inputValue: value });
+    this.setState({ inputValue: formatUrl(value) });
   },
 
   render() {
     return (
       <div>
+        <Text textColor='secondary'>Controlled Form</Text>
         <form onSubmit={ this.handleSubmit }>
           <input
             name='myInput'
@@ -33,7 +56,7 @@ export default React.createClass({
         </form>
         <Text textColor='secondary'>Last Value Submitted</Text>
         <input
-          placeholder='No value submitted'
+          onChange={ () => {} }
           type='text'
           value={ this.state.submitted }
         />
