@@ -44,25 +44,57 @@ export const PostList = React.createClass({
 });
 
 export const App = React.createClass({
+
+  // This is how we can access the router from within our component
+  contextTypes: {
+    router: React.PropTypes.object,
+  },
+
   getInitialState() {
     return {
       posts: [],
     };
   },
 
-
-  handleSubmit(e) {
-    e.preventDefault();
-    const subreddit = e.target.elements.subreddit.value.trim();
-
-    if (!subreddit) {
-      this.setState({ posts: [] });
-      return;
+  // Make sure to fetch on initial load to support deep linking
+  componentDidMount() {
+    if (this.props.params.r) {
+      this.fetchSubreddit();
     }
+  },
+
+  // Make sure to fetch every time the URL changes
+  componentDidUpdate(prevProps, prevState) {
+    const { params } = this.props;
+    if (params.r && params.r !== prevProps.params.r) {
+      this.fetchSubreddit();
+    }
+  },
+
+  // Fetch teh sub reddit and update state
+  fetchSubreddit() {
+    const subreddit = this.props.params.r;
 
     fetchR(subreddit)
     .then(posts => this.setState({ posts }))
-    .catch(err => console.error(err));
+    .catch(err => {
+      this.setState({ posts: [] });
+      console.error(err);
+    });
+  },
+
+  // When the form is submitted simply redirect the user to the appropriate page
+  handleSubmit(e) {
+    e.preventDefault();
+    const subreddit = e.target.elements.subreddit.value.trim();
+    const { router } = this.context;
+
+    if (!subreddit) {
+      router.push('/');
+      return;
+    }
+
+    router.push(`/r/${subreddit}`);
   },
 
   render() {
@@ -72,7 +104,7 @@ export const App = React.createClass({
         <form onSubmit={this.handleSubmit}>
           <input name='subreddit' type='text' placeholder='Enter Reddit...' />
         </form>
-        <PostList posts={posts} />
+        {React.cloneElement(this.props.children, { posts })}
       </div>
     );
   },
