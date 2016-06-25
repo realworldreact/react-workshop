@@ -12,4 +12,7 @@ const Header = React.createClass({
   },
 });
 
-render(<Header title='My Super Header'>, document.getElementById('header'));
+render(
+  <Header title='My Super Header' />,
+  document.getElementById('header')
+);

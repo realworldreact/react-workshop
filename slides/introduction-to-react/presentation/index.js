@@ -29,6 +29,8 @@ require('./index.css');
 
 import theme, { reactBlue } from './theme.js';
 
+const red = '#ff4343';
+
 const images = {
   city: require('../assets/city.jpg'),
   kat: require('../assets/kat.png'),
@@ -40,6 +42,7 @@ preloader(images);
 
 import { CounterContainer } from './Counter.js';
 import { Toggle } from './Toggle.js';
+import { EventsHeading } from './EventsHeading.js';
 
 export default class Presentation extends React.Component {
   render() {
@@ -296,6 +299,17 @@ export default class Presentation extends React.Component {
             />
           </Slide>
 
+          <Slide>
+            <Heading size={1} caps fit lineHeight={1} textColor={reactBlue}>
+              State
+            </Heading>
+            <Appear>
+              <Heading size={4} fit lineHeight={1} textColor='white'>
+                😈💩🙊😧
+              </Heading>
+            </Appear>
+          </Slide>
+
           <Slide notes={`
             * State is used to model interactivity and change over time
             * State should be as small as possible
@@ -363,9 +377,13 @@ export default class Presentation extends React.Component {
             </Appear>
             <Appear>
               <Heading size={4} fit caps lineHeight={1} textColor='white'>
-                ...until you need state
+                ...until you <span style={{ color: red }}>need</span> state
               </Heading>
             </Appear>
+          </Slide>
+
+          <Slide>
+            <EventsHeading />
           </Slide>
 
           <Slide notes={`
