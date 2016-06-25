@@ -1,9 +1,4 @@
 import React, { PropTypes } from 'react';
-import 'normalize.css';
-
-// Import CSS and favicon
-import './App.css';
-import './favicon.ico';
 
 const ENDPOINT = 'https://www.reddit.com/r/';
 
