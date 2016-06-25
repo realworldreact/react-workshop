@@ -17,7 +17,7 @@
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "spectacle": "^1.0.0",
-    "spectacle-code-slide": "^0.1.10"
+    "spectacle-code-slide": "^0.1.8"
   },
   "devDependencies": {
     "autoprefixer-core": "^6.0.1",
