@@ -1,8 +1,9 @@
-const FormContainer = React.createClass({
-  getInitialState: function() {
-    return {
-      filter: ''
-    };
+import React from 'react';
+import MyForm from './MyForm.jsx';
+
+export default React.createClass({
+  getInitialState() {
+    return { filter: '' };
   },
 
   updateFilter: function(e) {
@@ -14,7 +15,8 @@ const FormContainer = React.createClass({
     return (
       <MyForm
         filterValue={ this.state.filter }
-        updateFilter={ this.updateFilter } />
+        updateFilter={ this.updateFilter }
+      />
     );
   }
 });

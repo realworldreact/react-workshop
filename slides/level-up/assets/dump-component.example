@@ -1,14 +1,21 @@
-// dumb component
-// https://jsbin.com/runuwi/edit?js,output
-var Post = React.createClass({
-  render: function() {
-    var href = this.props.href;
-    var title = this.props.title;
+import React from 'react';
+
+export default React.createClass({
+  display: 'PresentationalComponent',
+  propTypes: {
+    href: React.propTypes.string,
+    title: React.propTypes.string
+  },
+
+  render() {
+    const href = this.props.href;
+    const title = this.props.title;
     return (
       <div className='Post'>
         <a
           href={ href }
-          target='_blank'>
+          target='_blank'
+          >
           { title }
         </a>
       </div>

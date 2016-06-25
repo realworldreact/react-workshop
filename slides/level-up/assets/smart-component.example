@@ -1,31 +1,42 @@
-// https://jsbin.com/tebegi/edit?js,output
-var App = React.createClass({
+import React from 'react';
+import Post from './Post.jsx';
+
+export default React.createClass({
+  displayName: 'AppContainer',
+
   getInitialState: function() {
-    return {
-      posts: []
-    };
+    return { posts: [] };
   },
 
   componentDidMount: function() {
-    fetch(ENDPOINT)
-      .then(res =>  res.json())
+    // modern fetch API
+    fetch('http://reddit.com/some/cool/api')
+      .then(res => res.json())
       .then(json => json.data.children)
       .then(posts => this.setState({ posts: posts }) )
       .catch(err => console.error('There was an error fetching.', err));
+  },
 
+  renderPosts(posts) {
+    // check if posts is empty
+    if (!posts.length) {
+      return <h2>No Reddit posts found</h2>;
+    }
+    return posts.map((post, i) => (
+      <Post
+        key={i}
+        post={post}
+      />
+    ));
   },
 
   render: function() {
     const { posts } = this.state;
     return (
       <div className='App'>
-        { posts.length ? (
-          <div className='posts'>
-            { posts.map((post, i) => (
-              <Post key={i} post={post} />
-            )) }
-          </div>
-        ) : <h2>No reddit posts</h2>}
+        <div className='posts'>
+          { this.renderPosts(posts) }
+        </div>
       </div>
     );
   }

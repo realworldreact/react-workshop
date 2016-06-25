@@ -1,8 +1,9 @@
-// https://jsbin.com/gacomo/edit?js,console,output
-const FancyInput = React.createClass({
-  displayName: 'FancyInput',
+import React from 'react';
 
-  getInitialState: () => ({ inputValue: 'foo' }),
+export default React.createClass({
+  displayName: 'ControlledInput',
+
+  getInitialState: () => ({ inputValue: '' }),
 
   handleSubmit: function(e) {
     e.preventDefault();
@@ -21,7 +22,8 @@ const FancyInput = React.createClass({
           name='myInput'
           onChange={ this.handleChange }
           type='text'
-          value={ this.state.inputValue } />
+          value={ this.state.inputValue }
+        />
       </form>
     );
   }
