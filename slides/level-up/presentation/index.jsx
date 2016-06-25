@@ -32,19 +32,22 @@ export default class Presentation extends React.Component {
       <Spectacle theme={ theme }>
         <Deck
           transition={[ 'zoom', 'slide' ]}
-          transitionDuration={ 500 }>
+          transitionDuration={ 500 }
+          >
           <Slide transition={[ 'zoom' ]}>
             <Heading
-              caps
-              fit
+              caps={ true }
+              fit={ true }
               lineHeight={ 1 }
-              size={ 1 }>
+              size={ 1 }
+              >
               Leveling Up
             </Heading>
             <Heading
-              caps
-              fit
-              size={ 2 }>
+              caps={ true }
+              fit={ true }
+              size={ 2 }
+              >
               Form control and state management
             </Heading>
           </Slide>
@@ -52,29 +55,33 @@ export default class Presentation extends React.Component {
             <List>
               <ListItem>
                 <Heading
-                  caps
-                  size={ 2 }>
+                  caps={ true }
+                  size={ 2 }
+                  >
                   Controlled Input
                 </Heading>
               </ListItem>
               <ListItem>
                 <Heading
-                  caps
-                  size={ 2 }>
+                  caps={ true }
+                  size={ 2 }
+                  >
                   One-way data flow
                 </Heading>
               </ListItem>
               <ListItem>
                 <Heading
-                  caps
-                  size={ 2 }>
+                  caps={ true }
+                  size={ 2 }
+                  >
                   Container Pattern
                 </Heading>
               </ListItem>
               <ListItem>
                 <Heading
-                  caps
-                  size={ 2 }>
+                  caps={ true }
+                  size={ 2 }
+                  >
                   Talking to Parents
                 </Heading>
               </ListItem>
@@ -108,10 +115,12 @@ export default class Presentation extends React.Component {
           <Slide>
             <Link
               href='http://jsbin.com/redigaxugu/edit?js,console,output'
-              target='_blank'>
+              target='_blank'
+              >
               <CodePane
                 lang='jsx'
-                source={ require('raw!../assets/uncontrolled.example') } />
+                source={ require('raw!../assets/uncontrolled.example') }
+              />
             </Link>
           </Slide>
           <Slide>
@@ -133,10 +142,12 @@ export default class Presentation extends React.Component {
           <Slide>
             <Link
               href='https://jsbin.com/gacomo/edit?js,console,output'
-              target='_blank'>
+              target='_blank'
+              >
               <CodePane
                 lang='jsx'
-                source={require('raw!../assets/controlled.example')} />
+                source={require('raw!../assets/controlled.example')}
+              />
             </Link>
           </Slide>
           <Slide>
@@ -171,10 +182,12 @@ export default class Presentation extends React.Component {
           <Slide>
             <Link
               href='https://jsbin.com/runuwi/edit?js,output'
-              target='_blank'>
+              target='_blank'
+              >
               <CodePane
                 lang='jsx'
-                source={require('raw!../assets/dump-component.example')} />
+                source={require('raw!../assets/dump-component.example')}
+              />
             </Link>
           </Slide>
           <Slide>
@@ -199,10 +212,12 @@ export default class Presentation extends React.Component {
           <Slide>
             <Link
               href='https://jsbin.com/tebegi/edit?js,output'
-              target='_blank'>
+              target='_blank'
+              >
               <CodePane
                 lang='jsx'
-                source={require('raw!../assets/smart-component.example')} />
+                source={require('raw!../assets/smart-component.example')}
+              />
             </Link>
           </Slide>
           <Slide>
@@ -234,7 +249,8 @@ export default class Presentation extends React.Component {
           <Slide>
             <CodePane
               lang='jsx'
-              source={require('raw!../assets/passing-callbacks.example')} />
+              source={require('raw!../assets/passing-callbacks.example')}
+            />
           </Slide>
           <Slide>
             <Heading size={ 1 }>
@@ -246,7 +262,8 @@ export default class Presentation extends React.Component {
             <hr />
             <CodePane
               lang='js'
-              source={require('raw!../assets/filtering.example')} />
+              source={require('raw!../assets/filtering.example')}
+            />
           </Slide>
           <Slide>
             <Heading size={ 2 }>
