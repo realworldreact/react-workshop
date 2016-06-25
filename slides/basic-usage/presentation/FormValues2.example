@@ -9,8 +9,8 @@ export const FormValues = React.createClass({
 
   handleSubmit(e) {
     e.preventDefault();
-    const val = e.target.elements.input.value.trim();
-    this.setState({ val });
+    const { value } = e.target.elements.input;
+    this.setState({ val: value });
   },
 
   render() {

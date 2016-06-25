@@ -47,7 +47,7 @@ export default class Presentation extends React.Component {
   render() {
     return (
       <Spectacle theme={theme}>
-        <Deck transition={['zoom', 'slide']} transitionDuration={500}>
+        <Deck progress='bar' controls={false} transition={['zoom', 'slide']} transitionDuration={500}>
 
           <Slide transition={['zoom']} bgColor='primary'>
             <Heading size={1} fit lineHeight={1} textColor={reactBlue}>
@@ -95,24 +95,15 @@ export default class Presentation extends React.Component {
             code={require('raw!./FormValues.example')}
             margin='20px auto'
             ranges={[
-              { loc: [0, 22], title: "Walking through some code" },
-              { loc: [0, 1], title: "The Beginning" },
-              { loc: [1, 2] },
-              { loc: [1, 2], note: "Heres a note!" },
-              { loc: [2, 3] },
-              { loc: [4, 7] },
-              { loc: [8, 10] },
+              { loc: [0, 22], title: 'Forms in React' },
+              { loc: [7, 8], note: 'Event handlers' },
+              { loc: [7, 13], note: "Input elements are what you'd expect" },
+              { loc: [1, 2], note: 'Heres a note!' },
+              { loc: [16, 17], note: 'Store form values in state' },
+              { loc: [0, 88], title: 'Forms' },
               // ...
             ]}
           />
-
-          <Slide transition={['zoom', 'fade']} bgColor='primary' notes='<ul><li>talk about that</li><li>and that</li></ul>'>
-            <CodePane
-              lang='jsx'
-              source={require('raw!./FormValues.example')}
-              margin='20px auto'
-            />
-          </Slide>
 
           <Slide notes={`
           * We've already seen event handlers in react. Forms are much the same
@@ -129,13 +120,21 @@ export default class Presentation extends React.Component {
             </List>
           </Slide>
 
-          <Slide transition={['zoom', 'fade']} bgColor='primary' notes='<ul><li>talk about that</li><li>and that</li></ul>'>
-            <CodePane
-              lang='jsx'
-              source={require('raw!./FormValues2.example')}
-              margin='20px auto'
-            />
-          </Slide>
+          <CodeSlide
+            transition={['zoom', 'fade']}
+            lang='jsx'
+            code={require('raw!./FormValues2.example')}
+            margin='20px auto'
+            ranges={[
+              { loc: [0, 100], title: 'The Form' },
+              { loc: [3, 8], note: 'We store the value on state' },
+              { loc: [18, 19], note: 'Attach an event handler' },
+              { loc: [9, 14], note: 'Define that event handler' },
+              { loc: [10, 11], note: 'Prevent default as you normally would' },
+              { loc: [11, 13], note: 'Store the value on state. The UI will update' },
+              // ...
+            ]}
+          />
 
           <Slide notes={`
           * Turns out state can be a good place to store lists that change

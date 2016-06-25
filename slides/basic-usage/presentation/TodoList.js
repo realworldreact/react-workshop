@@ -24,6 +24,10 @@ export const TodoList = React.createClass({
     input.value = '';
   },
 
+  handleResest() {
+    console.log('Uh oh... not doing anything here...');
+  },
+
   render() {
     return (
       <div>
@@ -40,7 +44,11 @@ export const TodoList = React.createClass({
             <li key={thing.id}>{thing.val}</li>
           ))}
         </ul>
-        <button style={{ color: 'black' }}>Reset</button>
+        <button
+          onClick={this.handleResest}
+          style={{ color: 'black' }}>
+          Reset
+        </button>
       </div>
     );
   },

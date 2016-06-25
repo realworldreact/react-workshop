@@ -3,37 +3,12 @@ import take from 'lodash/take';
 
 const ENDPOINT = 'https://www.reddit.com/r/';
 
-const Counter = React.createClass({
-  propTypes: {
-    count: PropTypes.number.isRequired,
-    onIncrement: PropTypes.func.isRequired,
-    onDecrement: PropTypes.func.isRequired,
-  },
-
-  render() {
-    const { count, onIncrement, onDecrement } = this.props;
-    return (
-      <div className='Counter'>
-        <div className='siteTitle'>
-          <h1>{count}</h1>
-        </div>
-        <div className='controls'>
-          <button onClick={onDecrement}>-</button>
-          <button onClick={onIncrement}>+</button>
-        </div>
-      </div>
-    );
-  },
-});
-
-const mapRedditPost = post => post.data;
-
 const Post = React.createClass({
   render() {
-    const { permalink, title } = mapRedditPost(this.props.post);
+    const { permalink, title } = this.props.post.data;
     return (
       <div className='Post'>
-        <a href={`https://www.reddit.com${permalink}`} target='_blank'>{title}</a>
+        <a style={{ color: 'lightblue' }} href={`https://www.reddit.com${permalink}`} target='_blank'>{title}</a>
       </div>
     );
   },
