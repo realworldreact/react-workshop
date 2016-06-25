@@ -1,20 +1,29 @@
 import React from 'react';
 
-const ENDPOINT = 'https://www.reddit.com/r/';
-
+/**
+ * Fetch a subreddit using the Reddit JSON API
+ * @param {string} subreddit
+ * @return {Promise<Array>}
+ */
 const fetchR = (subreddit) => {
-  return fetch(ENDPOINT + subreddit + '.json')
-  .then(res =>  res.json())
+  return fetch(`https://www.reddit.com/r/${subreddit}.json`)
+  .then(res => res.json())
   .then(json => json.data.children)
   .catch(err => console.error('There was an error fetching.', err));
 };
 
 const Post = React.createClass({
+  propTypes: {
+    post: React.PropTypes.shape({
+      data: React.PropTypes.object.isRequired,
+    }).isRequired,
+  },
+
   render() {
     const { permalink, title } = this.props.post.data;
     return (
       <div className='Post'>
-        <a href={`https://www.reddit.com${permalink}`} target='_blank'>{title}</a>
+        {/* Render based on the passed data */}
       </div>
     );
   },
@@ -29,16 +38,16 @@ export const App = React.createClass({
 
   handleSubmit(e) {
     e.preventDefault();
+
+    // subreddit is the value that the user input
     const subreddit = e.target.elements.subreddit.value.trim();
 
-    if (!subreddit) {
-      Promise.resolve([]).then(posts => this.setState({ posts }));
-      return;
-    }
+    // * If there is no subreddit assume the user emptied out the input. Reset the
+    // posts state to an empty array.
 
-    fetchR(subreddit)
-    .then(posts => this.setState({ posts }))
-    .catch(err => console.error(err));
+    // * If there is a subreddity passed then use the fetchR function defined
+    // above to fetch its posts.
+    // * Store those posts in state so that we can render links to them
   },
 
   render() {
@@ -48,13 +57,10 @@ export const App = React.createClass({
         <form onSubmit={this.handleSubmit}>
           <input name='subreddit' type='text' placeholder='Enter Reddit...' />
         </form>
-        {posts.length ? (
-          <div className='posts'>
-            {posts.map((post, i) => (
-              <Post key={i} post={post} />
-            ))}
-          </div>
-        ) : <h2>No reddit posts</h2>}
+        <div className='posts'>
+          {/* Render your posts here */}
+        </div>
+        {posts.length ? null : <h2>No reddit posts</h2>}
       </div>
     );
   },
