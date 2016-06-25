@@ -301,12 +301,17 @@ export default class Presentation extends React.Component {
               </ListItem>
             </List>
           </Slide>
-          <Slide>
-            <CodePane
-              lang='jsx'
-              source={require('raw!../assets/passing-callbacks.example')}
-            />
-          </Slide>
+          <CodeSlide
+            code={require('raw!../assets/container-component.example')}
+            lang='jsx'
+            ranges={[
+              { loc: [29, 30], title: 'Passing around functions' },
+              { loc: [11, 22] },
+              { loc: [19, 20] }
+            ]}
+            textSize={ 20 }
+            transition={['zoom', 'fade']}
+          />
           <Slide>
             <Heading size={ 1 }>
               Exercise
