@@ -48,7 +48,7 @@ export default class Presentation extends React.Component {
               fit={ true }
               size={ 2 }
               >
-              Form control and state management
+              state management
             </Heading>
           </Slide>
           <Slide>
@@ -91,7 +91,7 @@ export default class Presentation extends React.Component {
             <Heading size={ 2 }>
               Controlled vs Uncontrolled Inputs
             </Heading>
-            <Text>
+            <Text textColor='tertiary'>
               Controlling the value of inputs using React vs classical style
               uncontrolled inputs
             </Text>
@@ -102,7 +102,7 @@ export default class Presentation extends React.Component {
                 Uncontrolled forms (Classic HTML style)
               </ListItem>
               <ListItem>
-                Same as HTMl5 forms
+                Same as HTML5 forms
               </ListItem>
               <ListItem>
                 The value of the input is immediately rendered
