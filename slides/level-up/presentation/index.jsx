@@ -7,13 +7,13 @@ import {
   List,
   ListItem,
   CodePane,
-  Text,
-  Link
+  Text
 } from 'spectacle';
 import createTheme from 'spectacle/lib/themes/default';
 import CodeSlide from 'spectacle-code-slide';
 import UncontrolledForm from './Uncontrolled-Form.jsx';
 import ControlledForm from './Controlled-Form.jsx';
+import RedditApp from './Reddit-App.jsx';
 
 // Require CSS
 require('normalize.css');
@@ -185,69 +185,95 @@ export default class Presentation extends React.Component {
             </Heading>
             <List>
               <ListItem>
-                Dump (presentational) components render state
+                Container components
               </ListItem>
               <ListItem>
-                Smart (Container) components manage state and data fetching
+                Presentational Components
               </ListItem>
             </List>
           </Slide>
           <Slide>
             <Heading size={ 2 }>
-              Dump Components
+              Presentational Components
             </Heading>
             <List>
               <ListItem>
-                Only renders props
+                Only renders data coming form props
               </ListItem>
               <ListItem>
-                Can render other dump components
+                Can render other presentational components
               </ListItem>
               <ListItem>
                 Renders the same view for the same props
               </ListItem>
             </List>
           </Slide>
-          <Slide>
-            <Link
-              href='https://jsbin.com/runuwi/edit?js,output'
-              target='_blank'
-              >
-              <CodePane
-                lang='jsx'
-                source={require('raw!../assets/dump-component.example')}
-              />
-            </Link>
-          </Slide>
+          <CodeSlide
+            code={require('raw!../assets/presentational-component.example')}
+            lang='jsx'
+            ranges={[
+              { loc: [4, 6], title: 'Presents a Post' },
+              { loc: [6, 10], note: 'only renders props' },
+              { loc: [12, 14], note: 'only renders props' },
+              { loc: [16, 20], note: 'only renders props' },
+              { loc: [17, 18], note: 'only renders props' },
+              { loc: [20, 23] },
+              { loc: [21, 22] },
+              { loc: [28, 31], title: 'Presents a List of Posts' },
+              { loc: [31, 35], note: 'only renders props' },
+              { loc: [50, 51], note: 'only renders props' },
+              { loc: [51, 52], note: 'only renders props' },
+              { loc: [53, 58] },
+              { loc: [55, 56], note: 'sends posts to method' },
+              { loc: [36, 37] },
+              { loc: [38, 41] },
+              { loc: [41, 42] },
+              { loc: [42, 47] }
+            ]}
+            textSize={ 20 }
+            transition={['zoom', 'fade']}
+          />
           <Slide>
             <Heading size={ 2 }>
-              Smart Components
+              Container Components
             </Heading>
             <List>
               <ListItem>
-                few or no view elements of it's own
+                No rendered data
               </ListItem>
               <ListItem>
-                May be responsible for data fetching
+                May fetch
               </ListItem>
               <ListItem>
-                May have internal state
+                May Store
               </ListItem>
               <ListItem>
-                Passes state down to child components through props
+                Passes State
               </ListItem>
             </List>
           </Slide>
+          <CodeSlide
+            code={require('raw!../assets/container-component.example')}
+            lang='jsx'
+            ranges={[
+              { loc: [4, 6], title: 'Container Contains a Component' },
+              { loc: [24, 25] },
+              { loc: [26, 34] },
+              { loc: [28, 32], note: 'pass data to presentational component' },
+              { loc: [30, 31], note: 'an array' },
+              { loc: [29, 30], note: 'a function' },
+              { loc: [11, 22] },
+              { loc: [13, 14] },
+              { loc: [3, 4] },
+              { loc: [14, 19] },
+              { loc: [19, 20] },
+              { loc: [28, 32], note: 'pass data to presentational component' }
+            ]}
+            textSize={ 20 }
+            transition={['zoom', 'fade']}
+          />
           <Slide>
-            <Link
-              href='https://jsbin.com/tebegi/edit?js,output'
-              target='_blank'
-              >
-              <CodePane
-                lang='jsx'
-                source={require('raw!../assets/smart-component.example')}
-              />
-            </Link>
+            <RedditApp />
           </Slide>
           <Slide>
             <Heading size={ 2 }>
