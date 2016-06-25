@@ -2,8 +2,6 @@
 var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var axis = require('axis');
-var rupture = require('rupture');
 
 module.exports = {
   devtool: 'source-map',
@@ -42,9 +40,5 @@ module.exports = {
         loader: ExtractTextPlugin.extract('style', 'css!autoprefixer'),
       },
     ],
-  },
-
-  stylus: {
-    use: [axis(), rupture()],
   },
 };

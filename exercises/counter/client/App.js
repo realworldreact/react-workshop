@@ -22,5 +22,5 @@ export const App = React.createClass({
         </div>
       </div>
     );
-  }
-}
+  },
+});
