@@ -1,13 +1,15 @@
 # React Static Boilerplate (Barebones)
 
-A barebones boilerplate for building [React][] applications
-
 **Quick Start:**
 
-* `git clone https://github.com/iansinnott/react-static-boilerplate my-site && cd my-static-site`
-* `git checkout barebones && rm -rf .git`
 * `npm install`
 * `npm start` to run a dev server
-* Write an awesome client-side app...
-* `npm build` to minify, package and generate files
+* Write an awesome counter in `App.js`
 
+View the app at <http://localhost:3000>
+
+**Guidelines:**
+
+* Increment / Decrement
+* Display current count
+* Don't go below zero
