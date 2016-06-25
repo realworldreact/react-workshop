@@ -55,6 +55,7 @@ export const App = React.createClass({
   getInitialState() {
     return {
       posts: [],
+      loading: false,
     };
   },
 
@@ -105,6 +106,7 @@ export const App = React.createClass({
 
         {/* We will need to pass down the posts as we did before... */}
         {this.props.children}
+        {this.state.loading && <h1>Loading...</h1>}
       </div>
     );
   },
