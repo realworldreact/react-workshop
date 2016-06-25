@@ -15,11 +15,13 @@ var DEV_HOST = '//localhost:' + DEV_PORT + '/';
 var HMR_HOST = DEV_HOST + '__webpack_hmr';
 
 module.exports = {
-  devtool: 'inline-source-map',
+  devtool: 'cheap-module-source-map',
 
   entry: {
     app: [
       'webpack-hot-middleware/client?path=' + HMR_HOST,
+      'normalize.css',
+      './client/App.css',
       './client/index.js',
     ],
   },
@@ -33,11 +35,6 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('development'),
-      },
-    }),
   ],
 
   module: {
@@ -50,27 +47,6 @@ module.exports = {
       {
         test: /\.css$/,
         loaders: ['style', 'css'],
-      },
-      {
-        test: /\.styl/,
-        loaders: [
-          'style',
-          'css?modules&importLoaders=2&localIdentName=[name]__[local]__[hash:base64:6]',
-          'autoprefixer',
-          'stylus',
-        ],
-      },
-      {
-        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loaders: ['url?limit=10000&mimetype=application/font-woff'],
-      },
-      {
-        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loaders: ['file'],
-      },
-      {
-        test: /\.(png|jpg|gif|ico)$/,
-        loaders: ['file?name=[name].[ext]'],
       },
     ],
   },
