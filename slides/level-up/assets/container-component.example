@@ -1,33 +1,24 @@
 import React from 'react';
-import Post from './Post.jsx';
+import Posts from './Posts.jsx';
 
+const ENDPOINT = 'https://www.reddit.com/r/';
 export default React.createClass({
-  displayName: 'AppContainer',
+  displayName: 'RedditAppContainer',
 
   getInitialState: function() {
     return { posts: [] };
   },
 
-  componentDidMount: function() {
+  fetchPosts: function() {
     // modern fetch API
-    fetch('http://reddit.com/some/cool/api')
+    fetch(ENDPOINT + 'freecodecamp.json')
       .then(res => res.json())
       .then(json => json.data.children)
+      .then(posts => posts || Promise.reject(posts))
+      .then(posts => posts.slice(0, 4))
+      .then(posts => posts.map(x => x.data))
       .then(posts => this.setState({ posts: posts }) )
       .catch(err => console.error('There was an error fetching.', err));
-  },
-
-  renderPosts(posts) {
-    // check if posts is empty
-    if (!posts.length) {
-      return <h2>No Reddit posts found</h2>;
-    }
-    return posts.map((post, i) => (
-      <Post
-        key={i}
-        post={post}
-      />
-    ));
   },
 
   render: function() {
@@ -35,7 +26,10 @@ export default React.createClass({
     return (
       <div className='App'>
         <div className='posts'>
-          { this.renderPosts(posts) }
+          <Posts
+            fetch={ this.fetchPosts }
+            posts={ posts }
+          />
         </div>
       </div>
     );
