@@ -1,0 +1,30 @@
+import React from 'react';
+
+const App = React.createClass({
+  render() {
+    return (
+      <div className='App'>
+        <h1>Hey there</h1>
+        <p>I'm a component</p>
+      </div>
+    );
+  },
+});
+
+class App extends React.Component {
+  render() {
+    return (
+      <div className='App'>
+        <h1>Hey there</h1>
+        <p>I'm a component</p>
+      </div>
+    );
+  }
+}
+
+const App = () => (
+  <div className='App'>
+    <h1>Hey there</h1>
+    <p>I'm a component</p>
+  </div>
+);

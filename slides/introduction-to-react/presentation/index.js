@@ -54,10 +54,6 @@ export default class Presentation extends React.Component {
             <Image width={600} src={images.logo} />
           </Slide>
 
-          <Slide transition={['zoom']} bgColor='primary'>
-            <Image width={600} src={images.logo} />
-          </Slide>
-
           {/* Start actual slideshow */}
 
           <Slide transition={['zoom']} bgColor='primary'>
@@ -101,7 +97,7 @@ export default class Presentation extends React.Component {
             <List textColor='white'>
               <Appear><ListItem>Declarative</ListItem></Appear>
               <Appear><ListItem>Painless iteration path</ListItem></Appear>
-              <Appear><ListItem>Fun</ListItem></Appear>
+              <Appear><ListItem>Fun (good for morale, good for recruiting)</ListItem></Appear>
             </List>
           </Slide>
 
@@ -114,8 +110,9 @@ export default class Presentation extends React.Component {
             </Heading>
             <List textColor='white'>
               <Appear><ListItem>Tag Syntax (looks like HTML)</ListItem></Appear>
-              <Appear><ListItem>First class JavaScript</ListItem></Appear>
+              <Appear><ListItem>JavaScript + XML (not the other way around)</ListItem></Appear>
               <Appear><ListItem>Has some gotchas, but not dealbreakers</ListItem></Appear>
+              <Appear><ListItem>All tags must close or be self-closing</ListItem></Appear>
             </List>
           </Slide>
 
@@ -126,7 +123,7 @@ export default class Presentation extends React.Component {
             margin='20px auto'
             ranges={[
               { loc: [0, 1], title: "JSX" },
-              { loc: [0, 5], note: "Render to the dom" },
+              { loc: [0, 5], note: "Render to the DOM" },
               { loc: [6, 20] },
               { loc: [21, 39], title: 'Composition' },
               { loc: [26, 31], note: 'HorizontalNav' },
@@ -169,15 +166,12 @@ export default class Presentation extends React.Component {
             </List>
           </Slide>
 
-          <Slide transition={['zoom', 'fade']}>
-            <Heading size={1} caps fit lineHeight={1.5} textColor='white'>
+          <Slide>
+            <Heading size={1} caps fit lineHeight={1} textColor={reactBlue}>
               Components
             </Heading>
-          </Slide>
-
-          <Slide>
-            <Heading size={4} caps lineHeight={1.5} textColor='white'>
-              Components: Groups of JSX and JavaScript
+            <Heading size={4} fit lineHeight={1} textColor='white'>
+              Groups of JSX and JavaScript
             </Heading>
           </Slide>
 
@@ -199,14 +193,22 @@ export default class Presentation extends React.Component {
             <List textColor='white'>
               <Appear><ListItem>Original <code>React.createClass</code></ListItem></Appear>
               <Appear><ListItem>ES6 class syntax, i.e. extned <code>React.Component</code></ListItem></Appear>
-              <Appear><ListItem>Functional</ListItem></Appear>
+              <Appear><ListItem>Functional (Stateless)</ListItem></Appear>
             </List>
-            <Appear>
-              <Heading size={4} caps lineHeight={1.5} textColor='white'>
-                Don't worry about it
-              </Heading>
-            </Appear>
           </Slide>
+
+          <CodeSlide
+            transition={[]}
+            lang='jsx'
+            code={require('raw!./components.example')}
+            ranges={[
+              { loc: [0, 100], title: 'Defining Components' },
+              { loc: [2, 12], note: 'React.createClass' },
+              { loc: [13, 23], note: 'class extends React.Component' },
+              { loc: [24, 30], note: 'Functional (Stateless)' },
+              // ...
+            ]}
+          />
 
           <Slide>
             <Heading size={4} caps lineHeight={1.5} textColor='white'>
@@ -290,14 +292,19 @@ export default class Presentation extends React.Component {
             </List>
           </Slide>
 
-          <Slide notes={`
-          `.trim()}>
-            <CodePane
-              lang='jsx'
-              source={require('raw!./props.example')}
-              margin='20px auto'
-            />
-          </Slide>
+          <CodeSlide
+            transition={[]}
+            lang='jsx'
+            code={require('raw!./props.example')}
+            ranges={[
+              { loc: [0, 100], title: 'Passing Props' },
+              { loc: [3, 15], note: 'Define a component' },
+              { loc: [10, 11], note: 'Access this.props' },
+              { loc: [16, 20] },
+              { loc: [17, 18], note: 'Pass props in as you would HTML attributes' },
+              // ...
+            ]}
+          />
 
           <Slide>
             <Heading size={1} caps fit lineHeight={1} textColor={reactBlue}>
@@ -356,8 +363,7 @@ export default class Presentation extends React.Component {
             ]}
           />
 
-          <Slide notes={`
-          `.trim()}>
+          <Slide>
             <CodePane
               lang='jsx'
               source={require('raw!./state.example')}
@@ -365,8 +371,7 @@ export default class Presentation extends React.Component {
             />
           </Slide>
 
-          <Slide notes={`
-          `.trim()}>
+          <Slide>
             <Heading size={4} fit caps lineHeight={1} textColor='white'>
               Rule of thumb
             </Heading>
@@ -393,7 +398,7 @@ export default class Presentation extends React.Component {
             </Heading>
             <List textColor='white'>
               <Appear><ListItem>Attached directly to components</ListItem></Appear>
-              <Appear><ListItem>Aggregated by React</ListItem></Appear>
+              <Appear><ListItem>Aggregated by React (performant)</ListItem></Appear>
               <Appear><ListItem>Standardized across all browsers</ListItem></Appear>
             </List>
           </Slide>
@@ -403,6 +408,14 @@ export default class Presentation extends React.Component {
             <CodePane
               lang='jsx'
               source={require('raw!./events.example')}
+              margin='20px auto'
+            />
+          </Slide>
+
+          <Slide>
+            <CodePane
+              lang='jsx'
+              source={require('raw!./state.example')}
               margin='20px auto'
             />
           </Slide>

@@ -5,7 +5,9 @@ const Header = React.createClass({
   render() {
     return (
       <div className='Header'>
-        <img src='/images/logo.png' alt='Logo' />
+        <img
+          src='/images/logo.png'
+          alt='Logo' />
         <h1>{this.props.title}</h1>
       </div>
     );
