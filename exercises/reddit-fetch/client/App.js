@@ -9,7 +9,7 @@ const fetchR = (subreddit) => {
   return fetch(`https://www.reddit.com/r/${subreddit}.json`)
   .then(res => res.json())
   .then(json => json.data.children)
-  .catch(err => console.error('There was an error fetching.', err));
+  .then(posts => posts || Promise.reject(new Error('Invalid Subreddit')));
 };
 
 const Post = React.createClass({
