@@ -10,8 +10,9 @@ import {
   Text,
   Link
 } from 'spectacle';
-
 import createTheme from 'spectacle/lib/themes/default';
+import CodeSlide from 'spectacle-code-slide';
+import UncontrolledForm from './Uncontrolled-Form.jsx';
 
 // Require CSS
 require('normalize.css');
@@ -112,16 +113,22 @@ export default class Presentation extends React.Component {
               </ListItem>
             </List>
           </Slide>
+          <CodeSlide
+            code={ require('raw!../assets/uncontrolled.example') }
+            lang='jsx'
+            ranges={[
+              { loc: [18, 25] },
+              { loc: [18, 19], title: 'A Function' },
+              { loc: [9, 14] },
+              { loc: [11, 12], note: 'Grab the value' },
+              { loc: [12, 13], note: 'Save the value' },
+              { loc: [27, 32], note: 'display the value on next render' }
+            ]}
+            textSize={ 20 }
+            transition={['zoom', 'fade']}
+          />
           <Slide>
-            <Link
-              href='http://jsbin.com/redigaxugu/edit?js,console,output'
-              target='_blank'
-              >
-              <CodePane
-                lang='jsx'
-                source={ require('raw!../assets/uncontrolled.example') }
-              />
-            </Link>
+            <UncontrolledForm />
           </Slide>
           <Slide>
             <List>
