@@ -39,6 +39,7 @@ const images = {
 preloader(images);
 
 import { CounterContainer } from './Counter.js';
+import { Toggle } from './Toggle.js';
 
 export default class Presentation extends React.Component {
   render() {
@@ -266,8 +267,7 @@ export default class Presentation extends React.Component {
             </Appear>
           </Slide>
 
-          <Slide notes={`
-          `.trim()}>
+          <Slide>
             <Heading size={1} caps fit lineHeight={1} textColor={reactBlue}>
               Data
             </Heading>
@@ -308,17 +308,39 @@ export default class Presentation extends React.Component {
               <Appear><ListItem>Interactivity</ListItem></Appear>
               <Appear><ListItem>Change over time</ListItem></Appear>
             </List>
-            <Heading size={4} caps lineHeight={1.5} textColor='white'>
-              Examples
-            </Heading>
+            <Appear>
+              <Heading size={4} caps lineHeight={1.5} textColor='white'>
+                Examples
+              </Heading>
+            </Appear>
             <Appear>
               <List textColor='white'>
                 <Appear><ListItem>Value of a <code>{'<input />'}</code> tag</ListItem></Appear>
-                <Appear><ListItem>Whether the UI is loading or not</ListItem></Appear>
+                <Appear><ListItem>UI loading state</ListItem></Appear>
                 <Appear><ListItem>Unread message count</ListItem></Appear>
               </List>
             </Appear>
           </Slide>
+
+          <Slide>
+            <Toggle />
+          </Slide>
+
+          <CodeSlide
+            transition={[]}
+            lang='jsx'
+            code={require('raw!./state.example')}
+            ranges={[
+              { loc: [0, 100], title: 'Stateful Components' },
+              { loc: [1, 6], note: 'Define the initial state' },
+              { loc: [13, 25] },
+              { loc: [14, 15], note: 'Access state' },
+              { loc: [18, 22], note: 'Set attributes based on state' },
+              { loc: [17, 18], note: 'Set up an event handler to update state' },
+              { loc: [7, 12], note: 'Set up an event handler to update state' },
+              // ...
+            ]}
+          />
 
           <Slide notes={`
           `.trim()}>

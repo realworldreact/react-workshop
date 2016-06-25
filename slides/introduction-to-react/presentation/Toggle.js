@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const Toggle = React.createClass({
   getInitialState() {
     return {
@@ -17,6 +19,9 @@ export const Toggle = React.createClass({
       <div
         onClick={this.toggle}
         style={{
+          fontSize: 70,
+          lineHeight: 8,
+          fontWeight: 'bold',
           background: isOn ? 'yellow' : 'gray',
           color: isOn ? 'purple' : 'white',
         }}>

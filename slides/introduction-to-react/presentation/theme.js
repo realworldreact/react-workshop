@@ -34,6 +34,7 @@ merge(screen, {
         fontWeight: 'normal',
         minWidth: '100%',
         maxWidth: 800,
+        maxHeight: '80vh',
       },
       code: {
         textAlign: 'left',
