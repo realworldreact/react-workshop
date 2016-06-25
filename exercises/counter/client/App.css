@@ -29,6 +29,15 @@ button:first-child {
   display: inline-block;
   width: 80px;
   height: 80px;
+  opacity: 0.2;
+}
+
+.Counter h1 {
+  font-size: 80px;
+}
+.Counter button {
+  width: 50px;
+  height: 50px;
 }
 
 .Counter h1 {
