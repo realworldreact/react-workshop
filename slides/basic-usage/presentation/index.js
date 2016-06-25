@@ -20,6 +20,7 @@ import {
   Spectacle,
   Text,
 } from 'spectacle';
+import CodeSlide from 'spectacle-code-slide';
 require('normalize.css');
 require('spectacle/lib/themes/default/index.css');
 
@@ -87,6 +88,23 @@ export default class Presentation extends React.Component {
             </Heading>
             <FormValues />
           </Slide>
+
+          <CodeSlide
+            transition={['zoom', 'fade']}
+            lang='jsx'
+            code={require('raw!./FormValues.example')}
+            margin='20px auto'
+            ranges={[
+              { loc: [0, 22], title: "Walking through some code" },
+              { loc: [0, 1], title: "The Beginning" },
+              { loc: [1, 2] },
+              { loc: [1, 2], note: "Heres a note!" },
+              { loc: [2, 3] },
+              { loc: [4, 7] },
+              { loc: [8, 10] },
+              // ...
+            ]}
+          />
 
           <Slide transition={['zoom', 'fade']} bgColor='primary' notes='<ul><li>talk about that</li><li>and that</li></ul>'>
             <CodePane
