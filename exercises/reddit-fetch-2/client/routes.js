@@ -18,8 +18,10 @@ const NotFound = (props) => (
 export const routes = (
   <Route path='/' component={App}>
     <IndexRoute component={Home} />
-    <Route path='r/:r' component={PostList} />
-
-    <Route path='*' component={NotFound} />
+    {/*
+      We'll want to add some new routes here. We'll want to add a route for the
+      PostList we've imported above, as well as a catch-all route to act as a
+      client-side 404.
+    */}
   </Route>
 );

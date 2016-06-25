@@ -29,6 +29,8 @@ const Post = React.createClass({
   },
 });
 
+// PostList has been refactored into its own exportable component so that we can
+// use it with the Router
 export const PostList = React.createClass({
   render() {
     const { posts } = this.props;
@@ -56,22 +58,19 @@ export const App = React.createClass({
     };
   },
 
-  // Make sure to fetch on initial load to support deep linking
   componentDidMount() {
-    if (this.props.params.r) {
-      this.fetchSubreddit();
-    }
+    // We will need to fetch any subreddit that is already in the URL bar when
+    // the component mounts
   },
 
-  // Make sure to fetch every time the URL changes
   componentDidUpdate(prevProps, prevState) {
-    const { params } = this.props;
-    if (params.r && params.r !== prevProps.params.r) {
-      this.fetchSubreddit();
-    }
+    // We will want to fetch the current sub reddit if it has changed. I.e. if
+    // the user has input a new subreddit to fetch
   },
 
-  // Fetch teh sub reddit and update state
+  // Fetch the sub reddit and update state. Note that now instead of reading
+  // from the input field we are reading from the URL params provided to us by
+  // react router
   fetchSubreddit() {
     const subreddit = this.props.params.r;
 
@@ -89,12 +88,11 @@ export const App = React.createClass({
     const subreddit = e.target.elements.subreddit.value.trim();
     const { router } = this.context;
 
-    if (!subreddit) {
-      router.push('/');
-      return;
-    }
+    // If there is no subreddit (i.e. the input field is empty) then redirec the
+    // user to the home page '/'
 
-    router.push(`/r/${subreddit}`);
+    // If we do have a subreddit then redirect the user to /r/:subreddit using
+    // the router
   },
 
   render() {
@@ -104,7 +102,9 @@ export const App = React.createClass({
         <form onSubmit={this.handleSubmit}>
           <input name='subreddit' type='text' placeholder='Enter Reddit...' />
         </form>
-        {React.cloneElement(this.props.children, { posts })}
+
+        {/* We will need to pass down the posts as we did before... */}
+        {this.props.children}
       </div>
     );
   },
