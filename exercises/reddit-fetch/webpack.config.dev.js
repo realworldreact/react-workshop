@@ -20,7 +20,7 @@ module.exports = {
       'webpack-hot-middleware/client?path=' + HMR_HOST,
       'normalize.css',
       './client/App.css',
-      './client/index.js',
+      './client/index.jsx',
     ],
   },
 
