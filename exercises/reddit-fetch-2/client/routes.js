@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-import { App, PostList } from './App.js';
+import { App, PostList } from './App.jsx';
 
 const Home = () => (
   <div className='Home'>

@@ -1,4 +1,46 @@
 import React from 'react';
+import { createStore } from 'redux';
+import { connect } from 'react-redux';
+
+// reducer(state) => state || {}
+// middleware
+// f => f === function(f) { return f; }
+
+// actionCreator(..any) => Action
+
+// updateSearch
+const UPDATE_SEACH = 'UPDATE_SEARCH';
+const initialState = {
+  search: ''
+};
+
+function updateSearchField(searchString) {
+  return {
+    type: UPDATE_SEACH,
+    searchString: searchString
+  };
+}
+
+function postsReducer(state = {}, action) {
+  // state = state || {};
+  if (action.type === UPDATE_SEACH) {
+    console.log('foo', action);
+    // return Object.assign({}, state, { searchString: action.searchString });
+    return {
+      ...state,
+      searchString: action.searchString,
+      isStringUpdate: true
+    };
+  }
+  return state;
+}
+
+// redux store
+export const store = createStore(
+  postsReducer,
+  initialState,
+  window.devToolsExtension ? window.devToolsExtension() : f => f
+);
 
 /**
  * Fetch a subreddit using the Reddit JSON API
@@ -43,7 +85,10 @@ export const PostList = React.createClass({
   },
 });
 
-export const App = React.createClass({
+function mapStateToProps(state) {
+  return { searchString: state.searchString };
+}
+export const App = connect(mapStateToProps)(React.createClass({
 
   // This is how we can access the router from within our component
   contextTypes: {
@@ -53,6 +98,7 @@ export const App = React.createClass({
   getInitialState() {
     return {
       posts: [],
+      filterString: ''
     };
   },
 
@@ -97,15 +143,46 @@ export const App = React.createClass({
     router.push(`/r/${subreddit}`);
   },
 
+  handleFilterChange(e) {
+    const { value } = e.target;
+    this.setState({ filterString: value });
+  },
+
+  handleSearchChange(e) {
+    const { value } = e.target;
+    const updateSearchAction = updateSearchField(value);
+    this.props.dispatch(updateSearchAction);
+  },
+
   render() {
-    const { posts } = this.state;
+    const { posts, filterString } = this.state;
+    /*
+    const filtersPosts = posts.filter(function(post) {
+      return (new RegExp(search, 'i')).test(post.data.title);
+    });
+    */
+   const filtersPosts = posts;
     return (
       <div className='App'>
-        <form onSubmit={this.handleSubmit}>
-          <input name='subreddit' type='text' placeholder='Enter Reddit...' />
+        <form onSubmit={ this.handleSubmit }>
+          <input
+            name='subreddit'
+            type='text'
+            value={ this.props.searchString }
+            onChange={ this.handleSearchChange }
+            placeholder='Enter Reddit...'
+          />
         </form>
-        {React.cloneElement(this.props.children, { posts })}
+        {/*
+        <input
+          name='filter'
+          type='text'
+          value={ filterString }
+          onChange={ this.handleFilterChange}
+        />
+        */}
+        {React.cloneElement(this.props.children, { posts: filtersPosts })}
       </div>
     );
   },
-});
+}));
