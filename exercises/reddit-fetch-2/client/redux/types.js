@@ -1,0 +1,3 @@
+export const UPDATE_SEARCH = 'UPDATE_SEARCH';
+export const UPDATE_FILTER = 'UPDATE_FILTER';
+export const UPDATE_POSTS = 'UDPATE_POSTS';

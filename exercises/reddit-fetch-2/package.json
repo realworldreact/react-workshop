@@ -57,6 +57,7 @@
   "dependencies": {
     "react-redux": "^4.4.5",
     "react-router": "^2.5.1",
-    "redux": "^3.5.2"
+    "redux": "^3.5.2",
+    "redux-promise": "^0.5.3"
   }
 }
