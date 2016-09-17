@@ -52,7 +52,13 @@ export const App = React.createClass({
 
   fetch(subreddit) {
     return fetch(ENDPOINT + subreddit + '.json')
-    .then(res =>  res.json())
+    .then(res =>  {
+      if (!res.ok) {
+        throw new Error(res.statusText);
+      }
+      return res.json();
+    })
+    .then(res => (console.log(res), res))
     .then(json => json.data.children)
     .catch(err => console.error('There was an error fetching.', err));
   },
@@ -72,7 +78,7 @@ export const App = React.createClass({
   },
 
   render() {
-    const { posts } = this.state;
+    const { posts = [] } = this.state;
     return (
       <div className='App'>
         <form onSubmit={this.handleSubmit}>
